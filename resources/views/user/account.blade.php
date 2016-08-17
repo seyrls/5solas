@@ -32,15 +32,12 @@
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" value="{{$user->created_at}}"></div>
                                     </div>
-
-
-
                                 </form>
-
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
+
 @include("_footer")

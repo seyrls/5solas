@@ -19,3 +19,5 @@ Route::get('/logout', 'LoginController@logout');
 
 Route::get('/account', 'DashboardController@show');
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/families', 'FamilyController@index');

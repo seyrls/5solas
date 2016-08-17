@@ -59,7 +59,7 @@ class DashboardController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        return view('dashboard.account', compact('user'));
+        return view('user.account', compact('user'));
     }
 
     /**

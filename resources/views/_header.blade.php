@@ -57,10 +57,10 @@
     <nav class="ts-sidebar">
         <ul class="ts-sidebar-menu">
             <li class="ts-label">{{ trans('messages.main') }}</li>
-            <li><a href="#"><i class="fa fa-dashboard"></i> {{ trans('messages.dashboard') }}</a></li>
+            <li><a href="{{ url('/dashboard') }}"><i class="fa fa-dashboard"></i> {{ trans('messages.dashboard') }}</a></li>
             <li><a href="#"><i class="fa fa-users"></i> {{ trans('menu.families') }}</a>
                 <ul>
-                    <li><a href="#"><i class="fa fa-users"></i>{{ trans('menu.add_family') }}</a></li>
+                    <li><a href="{{url('/families')}}"><i class="fa fa-users"></i>{{ trans('menu.add_family') }}</a></li>
                     <li><a href="#"><i class="fa fa-user-plus"></i>{{ trans('menu.add_member') }}</a></li>
                 </ul>
             </li>
@@ -70,14 +70,14 @@
                     <li><a href="#"><i class="fa fa-book"></i>{{ trans('menu.add_type_tithe') }}</a></li>
                 </ul>
             </li>
-            <li><a href="forms.html"><i class="fa fa-money"></i> {{ trans('menu.expensives') }}</a>
+            <li><a href="#"><i class="fa fa-money"></i> {{ trans('menu.expensives') }}</a>
                 <ul>
                     <li><a href="#"><i class="fa fa-bank"></i>{{ trans('menu.add_account') }}</a></li>
                     <li><a href="#"><i class="fa fa-bars"></i>{{ trans('menu.add_category') }}</a></li>
                     <li><a href="#"><i class="fa fa-calculator"></i>{{ trans('menu.expensive') }}</a></li>
                 </ul>
             </li>
-            <li><a href="charts.html"><i class="fa fa-pie-chart"></i> {{ trans('menu.charts') }}</a>
+            <li><a href="#"><i class="fa fa-pie-chart"></i> {{ trans('menu.charts') }}</a>
                 <ul>
                     <li><a href="#"><i class="fa fa-envelope"></i>{{ trans('menu.tithes') }}</a></li>
                     <li><a href="#"><i class="fa fa-users"></i>{{ trans('menu.families') }}</a></li>
@@ -89,20 +89,5 @@
                     <li><a href="#"><i class="fa fa-child"></i> {{ trans('menu.users') }}</a></li>
                 </ul>
             </li>
-
-            <!-- Account from above -->
-            <ul class="ts-profile-nav">
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Settings</a></li>
-                <li class="ts-account">
-                    <a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
-                    <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Edit Account</a></li>
-                        <li><a href="{{ url('/logout') }}">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-
         </ul>
     </nav>

@@ -17,4 +17,14 @@ return [
     'search' => 'Procurar',
     'main' => 'Principal',
     'dashboard' => 'Painel',
+
+    'members' => 'membros',
+    'details' => 'Detalhes',
+    'balances' => 'Saldo',
+    'amount_expenses' => 'Total de despesas',
+    'amount_tithes' => 'Total de dizimos',
+    'last_tithes' => 'Ultimas entradas (dizimos)',
+    'name' => 'Nome',
+    'amount' => 'Total',
+    'date' => 'Data',
 ];

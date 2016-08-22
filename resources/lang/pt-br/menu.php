@@ -11,12 +11,23 @@ return [
     |
     */
     'families' => 'Famílias',
-    'add_family' => 'Família',
     'add_member' => 'Membro da família',
+    'add_family' => 'Adicionar familia',
+    'list_family' => 'Listar familias',
+
+    'members' => 'Membros',
+    'add_member' => 'Adicionar membro da família',
+    'list_member' => 'Listar membros da familia',
 
     'tithes' => 'Dizímos',
-    'add_tithe' => 'Dizímo',
+    'add_tithe' => 'Adicionar dizímo',
+    'list_tithe' => 'Listar dizímos',
     'add_type_tithe' => 'Tipos',
+
+    'type' => 'Tipos',
+    'add_type' => 'Adicionar tipos',
+    'list_type' => 'Listar tipos',
+
 
     'expensives' => 'Gastos',
     'add_account' => 'Contas',
@@ -28,4 +39,10 @@ return [
 
     'administration' => 'Administração',
     'users' => 'Usuários',
+
+    'add' => 'Adicionar',
+    'edit' => 'Editar',
+    'delete' => 'Apagar',
+    'save' => 'Salvar',
+    'cancel' => 'Cancelar',
 ];

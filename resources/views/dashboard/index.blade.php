@@ -14,7 +14,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body bk-primary text-light">
                                         <div class="stat-panel text-center">
-                                            <div class="stat-panel-number h1 ">24</div>
+                                            <div class="stat-panel-number h1 ">{{$member}}</div>
                                             <div class="stat-panel-title text-uppercase">{{trans('messages.members')}}</div>
                                         </div>
                                     </div>
@@ -67,43 +67,6 @@
                                     <canvas id="dashReport" height="310" width="600"></canvas>
                                 </div>
                                 <div id="legendDiv"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">{{trans('messages.last_tithes')}}</div>
-                            <div class="panel-body">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>{{trans('messages.name')}}</th>
-                                        <th>{{trans('messages.amount')}}</th>
-                                        <th>{{trans('messages.date')}}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>

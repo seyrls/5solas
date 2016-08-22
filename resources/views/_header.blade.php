@@ -12,21 +12,37 @@
     <title>{{trans('messages.title')}}</title>
 
     <!-- Font awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}">
     <!-- Sandstone Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
     <!-- Bootstrap Datatables -->
-    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="{{URL::asset('css/dataTables.bootstrap.min.css')}}">
     <!-- Bootstrap social button library -->
-    <link rel="stylesheet" href="css/bootstrap-social.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-social.css')}}">
     <!-- Bootstrap select -->
-    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link rel="stylesheet" href="{{URL::asset('css/bootstrap-select.css')}}">
     <!-- Bootstrap file input -->
-    <link rel="stylesheet" href="css/fileinput.min.css">
+    <link rel="stylesheet" href="{{URL::asset('css/fileinput.min.css')}}">
     <!-- Awesome Bootstrap checkbox -->
-    <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
+    <link rel="stylesheet" href="{{URL::asset('css/awesome-bootstrap-checkbox.css')}}">
     <!-- Admin Stye -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
+
+    <!-- new fields html5 firefox-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webshim/1.15.10/dev/polyfiller.js"></script>
+    <script>
+        webshims.setOptions('forms-ext', {types: 'date'});
+        webshims.polyfill('forms forms-ext');
+        $.webshims.formcfg = {
+            en: {
+                dFormat: '-',
+                dateSigns: '-',
+                patterns: {
+                    d: "dd-mm-yy"
+                }
+            }
+        };
+    </script>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -61,13 +77,13 @@
             <li><a href="#"><i class="fa fa-users"></i> {{ trans('menu.families') }}</a>
                 <ul>
                     <li><a href="{{url('/families')}}"><i class="fa fa-users"></i>{{ trans('menu.add_family') }}</a></li>
-                    <li><a href="#"><i class="fa fa-user-plus"></i>{{ trans('menu.add_member') }}</a></li>
+                    <li><a href="{{url('/members')}}"><i class="fa fa-user-plus"></i>{{ trans('menu.add_member') }}</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-envelope"></i> {{ trans('menu.tithes') }}</a>
                 <ul>
-                    <li><a href="#"><i class="fa fa-plus"></i>{{ trans('menu.add_tithe') }}</a></li>
-                    <li><a href="#"><i class="fa fa-book"></i>{{ trans('menu.add_type_tithe') }}</a></li>
+                    <li><a href="{{url('/tithes')}}"><i class="fa fa-plus"></i>{{ trans('menu.add_tithe') }}</a></li>
+                    <li><a href="{{url('/types')}}"><i class="fa fa-book"></i>{{ trans('menu.add_type_tithe') }}</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-money"></i> {{ trans('menu.expensives') }}</a>

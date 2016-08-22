@@ -17,8 +17,11 @@ return [
     'search' => 'Procurar',
     'main' => 'Principal',
     'dashboard' => 'Painel',
+    'type' => 'Tipo',
 
-    'members' => 'membros',
+    'family' => 'Família',
+    'members' => 'Membros',
+    'member' => 'Membro',
     'details' => 'Detalhes',
     'balances' => 'Saldo',
     'amount_expenses' => 'Total de despesas',
@@ -27,4 +30,21 @@ return [
     'name' => 'Nome',
     'amount' => 'Total',
     'date' => 'Data',
+    'address' => 'Endereço',
+    'birthday' => 'Aniversário',
+    'telephone' => 'Telefone',
+    'cellphone' => 'Celular',
+    'email' => 'E-mail',
+    'gender' => 'Sexo',
+    'created_at' => 'Adicionado em',
+    'updated_at' => 'Atualizado em',
+    'option' => 'Opção',
+
+    'tithe' => 'Dizímo',
+    'period' => 'Período',
+
+    'list' => 'Listagem geral',
+
+    'save' => 'Registro salvo com sucesso!',
+    'fail' => 'Erro ao inserir registro!',
 ];

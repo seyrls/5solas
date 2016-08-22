@@ -12,8 +12,8 @@
                     <div class="panel-heading">{{trans('messages.details')}}</div>
                     <div class="panel-body">
                         <div class="well">
-                            <a href="{{url('families/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_family')}}</a>
-                            <a href="{{url('families')}}" class="btn btn-success btn-sm">{{trans('menu.list_family')}}</a>
+                            <a href="{{url('members/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_member')}}</a>
+                            <a href="{{url('members')}}" class="btn btn-success btn-sm">{{trans('menu.list_member')}}</a>
                         </div>
 
                         @if($errors->any())
@@ -42,8 +42,13 @@
                         <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
+                                <th>{{trans('messages.family')}}</th>
                                 <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.address')}}</th>
+                                <th>{{trans('messages.birthday')}}</th>
+                                <th>{{trans('messages.telephone')}}</th>
+                                <th>{{trans('messages.cellphone')}}</th>
+                                <th>{{trans('messages.email')}}</th>
+                                <th>{{trans('messages.gender')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -51,8 +56,13 @@
                             </thead>
                             <tfoot>
                             <tr>
+                                <th>{{trans('messages.family')}}</th>
                                 <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.address')}}</th>
+                                <th>{{trans('messages.birthday')}}</th>
+                                <th>{{trans('messages.telephone')}}</th>
+                                <th>{{trans('messages.cellphone')}}</th>
+                                <th>{{trans('messages.email')}}</th>
+                                <th>{{trans('messages.gender')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -61,17 +71,22 @@
                             <tbody>
                             @if(!empty($data))
                                 @foreach($data as $d)
-                                <tr>
-                                    <td>{{$d->name}}</td>
-                                    <td>{{$d->address}}</td>
-                                    <td>{{$d->created_at}}</td>
-                                    <td>{{$d->updated_at}}</td>
-                                    <td>
-                                        <a href="{{url('families/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
+                                    <tr>
+                                        <td>{{$d->family}}</td>
+                                        <td>{{$d->name}}</td>
+                                        <td>{{$d->birthday}}</td>
+                                        <td>{{$d->telephone}}</td>
+                                        <td>{{$d->cellphone}}</td>
+                                        <td>{{$d->email}}</td>
+                                        <td>{{$d->gender}}</td>
+                                        <td>{{$d->created_at}}</td>
+                                        <td>{{$d->updated_at}}</td>
+                                        <td>
+                                            <a href="{{url('members/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
 
-                                        <a href="#myModal"  class="btn btn-default btn-xs xx" data-id="{{$d->id}}" data-toggle="modal" onclick="teste('{{$d->id}}', '{{$d->name}}')">{{trans('menu.delete')}}</a>
-                                    </td>
-                                </tr>
+                                            <a href="#myModal"  class="btn btn-default btn-xs xx" data-id="{{$d->id}}" data-toggle="modal" onclick="teste('{{$d->id}}', '{{$d->name}}')">{{trans('menu.delete')}}</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             @endif
 
@@ -91,7 +106,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                         </div>
-                        <form method="post" action="{{url('families/delete')}}">
+                        <form method="post" action="{{url('member/delete')}}">
                             <div class="modal-body">
                                 <p>Deseja apagar o registro?</p>
                                 <div id="name"></div>

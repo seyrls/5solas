@@ -12,8 +12,8 @@
                     <div class="panel-heading">{{trans('messages.details')}}</div>
                     <div class="panel-body">
                         <div class="well">
-                            <a href="{{url('families/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_family')}}</a>
-                            <a href="{{url('families')}}" class="btn btn-success btn-sm">{{trans('menu.list_family')}}</a>
+                            <a href="{{url('tithes/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_tithe')}}</a>
+                            <a href="{{url('tithes')}}" class="btn btn-success btn-sm">{{trans('menu.list_tithe')}}</a>
                         </div>
 
                         @if($errors->any())
@@ -42,8 +42,10 @@
                         <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.address')}}</th>
+                                <th>{{trans('messages.member')}}</th>
+                                <th>{{trans('messages.period')}}</th>
+                                <th>{{trans('messages.tithe')}}</th>
+                                <th>{{trans('messages.type')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -51,8 +53,10 @@
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.address')}}</th>
+                                <th>{{trans('messages.member')}}</th>
+                                <th>{{trans('messages.period')}}</th>
+                                <th>{{trans('messages.tithe')}}</th>
+                                <th>{{trans('messages.type')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -61,17 +65,18 @@
                             <tbody>
                             @if(!empty($data))
                                 @foreach($data as $d)
-                                <tr>
-                                    <td>{{$d->name}}</td>
-                                    <td>{{$d->address}}</td>
-                                    <td>{{$d->created_at}}</td>
-                                    <td>{{$d->updated_at}}</td>
-                                    <td>
-                                        <a href="{{url('families/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
-
-                                        <a href="#myModal"  class="btn btn-default btn-xs xx" data-id="{{$d->id}}" data-toggle="modal" onclick="teste('{{$d->id}}', '{{$d->name}}')">{{trans('menu.delete')}}</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$d->name}}</td>
+                                        <td>{{$d->period}}</td>
+                                        <td>{{trans('forms.symbol_money')}} {{$d->amount}}</td>
+                                        <td>{{$d->type}}</td>
+                                        <td>{{$d->created_at}}</td>
+                                        <td>{{$d->updated_at}}</td>
+                                        <td>
+                                            <a href="{{url('tithes/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
+                                            <a href="#myModal"  class="btn btn-default btn-xs xx" data-id="{{$d->id}}" data-toggle="modal" onclick="teste('{{$d->id}}', '{{$d->amount}}')">{{trans('menu.delete')}}</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             @endif
 
@@ -91,7 +96,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                         </div>
-                        <form method="post" action="{{url('families/delete')}}">
+                        <form method="post" action="{{url('tithes/delete')}}">
                             <div class="modal-body">
                                 <p>Deseja apagar o registro?</p>
                                 <div id="name"></div>

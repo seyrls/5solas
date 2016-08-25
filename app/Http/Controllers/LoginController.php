@@ -7,8 +7,10 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
-
-
+use App\Member;
+use App\User;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 
@@ -22,11 +24,13 @@ class LoginController extends Controller
     public function index()
     {
         if (Auth::check()){
-            echo(Auth::user()->name);
-            return view('dashboard.index');
+            $data['member'] = Member::count();
+            $data['data'] = User::count();
+
+            return View::make('dashboard.index', $data);
         }else{
             Auth::logout();
-            return view('login');
+            return View::make('login');
         }
     }
 
@@ -59,7 +63,7 @@ class LoginController extends Controller
            } else {
                // if any error send back with message.
                Session::flash('error', 'Something went wrong');
-               return Redirect::to('/');
+               return Redirect::to('/')->withErrors(trans('login.error'));
            }
        }
 

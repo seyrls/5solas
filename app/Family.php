@@ -9,4 +9,8 @@ class Family extends Model
     public function member(){
         return $this->hasMany('App\Member');
     }
+
+    public function getFamilyId($member_id){
+
+    }
 }

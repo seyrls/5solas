@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'LoginController@index');
+
 /*Login routes*/
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
@@ -51,3 +52,53 @@ Route::post('/tithes/save', 'TitheController@save');
 Route::get('/tithes/edit/{id}', 'TitheController@edit');
 Route::post('/tithes/update', 'TitheController@update');
 Route::post('/tithes/delete', 'TitheController@delete');
+
+/*Category routes*/
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/add', 'CategoryController@add');
+Route::post('/categories/save', 'CategoryController@save');
+Route::get('/categories/edit/{id}', 'CategoryController@edit');
+Route::post('/categories/update', 'CategoryController@update');
+Route::post('/categories/delete', 'CategoryController@delete');
+
+/*SubCategory routes*/
+Route::get('/subcategories', 'SubcategoryController@index');
+Route::get('/subcategories/add', 'SubcategoryController@add');
+Route::post('/subcategories/save', 'SubcategoryController@save');
+Route::get('/subcategories/edit/{id}', 'SubcategoryController@edit');
+Route::post('/subcategories/update', 'SubcategoryController@update');
+Route::post('/subcategories/delete', 'SubcategoryController@delete');
+
+/*Account routes*/
+Route::get('/accounts', 'AccountController@index');
+Route::get('/accounts/add', 'AccountController@add');
+Route::post('/accounts/save', 'AccountController@save');
+Route::get('/accounts/edit/{id}', 'AccountController@edit');
+Route::post('/accounts/update', 'AccountController@update');
+Route::post('/accounts/delete', 'AccountController@delete');
+
+/*User routes*/
+Route::get('/users', 'UserController@index');
+Route::get('/users/add', 'UserController@add');
+Route::post('/users/save', 'UserController@save');
+
+/*Expenses routes*/
+Route::get('/expenses', 'ExpenseController@index');
+Route::get('/expenses/add', 'ExpenseController@add');
+Route::post('/expenses/save', 'ExpenseController@save');
+Route::get('/expenses/edit/{id}', 'ExpenseController@edit');
+Route::post('/expenses/update', 'ExpenseController@update');
+Route::post('/expenses/delete', 'ExpenseController@delete');
+
+
+/*See public/js/combobox.js for more details*/
+Route::get('/combobox/subcategory/{id}', function ($id) {
+    $d = new \App\Library\Combobox();
+
+    return $d->getJquerySubCategory($id);
+});
+Route::get('/combobox/member/{id}', function ($id) {
+    $d = new \App\Library\Combobox();
+
+    return $d->getJqueryMember($id);
+});

@@ -17,7 +17,7 @@ class CreateExpensesTable extends Migration
             $table->integer('subcategory_id')->unsigned();
             $table->foreign('subcategory_id')->references('id')->on('subcategories');
             $table->integer('account_id')->unsigned();
-            $table->foreign('account_id')->references('id')->on('categories');
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('description', 150);
             $table->text('observation')->nullable();
             $table->decimal('amount',7,2);

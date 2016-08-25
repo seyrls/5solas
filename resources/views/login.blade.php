@@ -44,6 +44,15 @@
                     <h1 class="text-center text-bold text-light mt-4x">{{trans('login.signin')}}</h1>
                     <div class="well row pt-2x pb-3x bk-light">
                         <div class="col-md-8 col-md-offset-2">
+                            @if($errors->any())
+                                <div class="alert alert-dismissible alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-remove"></i></button>
+                                    @foreach($errors->all() as $error)
+                                        <strong>{{ $error }}</strong>
+                                    @endforeach
+                                </div>
+                            @endif
+
                             <form class="mt" role="form" method="POST" action="{{ url('/login') }}">
 
                                 <label for="" class="text-uppercase text-sm">{{trans('login.username')}}</label>

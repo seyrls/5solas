@@ -32,10 +32,20 @@ return [
     'amount' => 'Valor',
     'period' => 'Data',
 
+    'category_name' => 'Nome da categoria',
+    'subcategory_name' => 'Nome da subcategoria',
+
+    'account_name' => 'Nome da conta',
+    'balance' =>'Saldo',
+    'description' => 'Descrição',
+    'date' => 'Data',
+    'observation' => 'Observação',
+    'tag' => 'Nota',
+
     'symbol_money' => 'R$',
 
     'phone_placeholder' => 'DDD + NÚMERO',
-    'email_placeholder' => 'Informe seu e-mail: xxx@email.com'
+    'email_placeholder' => 'Informe seu e-mail: xxx@email.com',
 
-
+    'mandatory' => '*Preenchimento obrigatório'
 ];

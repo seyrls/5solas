@@ -9,47 +9,46 @@
 
                 <!-- Zero Configuration Table -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('messages.details')}}</div>
+                    <div class="panel-heading">{{trans('menu.edit_tithe')}}</div>
                     <div class="panel-body">
                         <div class="well">
                             <a href="{{url('tithes/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_tithe')}}</a>
                             <a href="{{url('tithes')}}" class="btn btn-success btn-sm">{{trans('menu.list_tithe')}}</a>
                         </div>
 
-                        <form method="post" class="form-horizontal" action="{{url('tithes/save')}}">
+                        <form method="post" class="form-horizontal" action="{{url('tithes/update')}}">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.period')}}</label>
                                 <div class="col-sm-2">
-                                    <input name="period" type="date" class="form-control">
+                                    <input name="period" type="date" class="form-control" value="{{$data->period}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{trans('forms.family_name')}}</label>
+                                <div class="col-sm-10">
+                                    {!!$family!!}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.member_name')}}</label>
-                                <div class="col-sm-10">
-                                    <select class="selectpicker" data-selected-text-format="count" name="member_id" required>
-                                        @foreach($member as $m)
-                                            <option value="{{$m->id}}">{{$m->name}}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-sm-10" id="member">
+                                     {!!$member!!}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.type')}}</label>
                                 <div class="col-sm-10">
-                                    <select class="selectpicker" data-selected-text-format="count" name="type_id" required>
-                                        @foreach($type as $t)
-                                            <option value="{{$t->id}}">{{$t->type}}</option>
-                                        @endforeach
-                                    </select>
+                                    {!!$type!!}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.amount')}}</label>
                                 <div class="col-sm-2">
-                                    <input name="amount" type="text" class="form-control" placeholder="{{trans('forms.amount')}}" required>
+                                    <input name="amount" type="text" class="form-control" value="{{$data->amount}}" placeholder="{{trans('forms.amount')}}" required>
                                 </div>
                             </div>
 
@@ -60,7 +59,7 @@
                                     <button class="btn btn-danger" type="reset">{{trans('menu.cancel')}}</button>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="id" value="{{$data->id}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </form>
                     </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Validator;
 use App\Type;
 
@@ -14,15 +15,15 @@ class TypeController extends Controller
 {
     public function index() {
         if (Auth::check()){
-            $data = Type::all();
-            return view('type.index', compact('data'));
+            $data['data'] = Type::all();
+            return View::make('type.index', $data);
         }else{
             return Redirect::to('/');
         }
     }
 
     public function add(){
-        return view('type.add');
+        return View::make('type.add');
     }
 
     public function save(Request $request){
@@ -42,17 +43,17 @@ class TypeController extends Controller
             $type = new Type;
             $type->type = $request->input('type');
 
-            $msg = $type->save();
-            $data = $type->all();
+            $data['msg'] = $type->save();
+            $data['data'] = $type->all();
 
-            return view('type.index', compact('msg'), compact('data'));
+            return View::make('type.index', $data);
         }
     }
 
     public function edit($id){
-        $data = Type::find($id);
+        $data['data'] = Type::find($id);
 
-        return view('type.edit', compact('data'));
+        return View::make('type.edit', $data);
     }
 
     public function update(Request $request){
@@ -60,25 +61,25 @@ class TypeController extends Controller
 
         $type->name = $request->input('type');
 
-        $msg = $type->save();
-        $data = $type->all();
+        $data['msg'] = $type->save();
+        $data['data'] = $type->all();
 
-        return view('type.index', compact('msg'), compact('data'));
+        return View::make('type.index', $data);
     }
 
     public function delete(Request $request){
         $type = Type::destroy($request->id);
 
         if ($type ==1){
-            $data = Type::all();
-            $msg = true;
+            $data['data'] = Type::all();
+            $data['msg'] = true;
 
-            return view('type.index', compact('msg'), compact('data'));
+            return View::make('type.index', $data);
         } else{
-            $data = Type::all();
-            $msg = false;
+            $data['data'] = Type::all();
+            $data['msg'] = false;
 
-            return view('type.index', compact('msg'), compact('data'));
+            return View::make('type.index', $data);
         }
 
     }

@@ -43,7 +43,20 @@ return [
     'tithe' => 'Dizímo',
     'period' => 'Período',
 
+    'category' => 'Categoria',
+    'subcategory' => 'Subcategoria',
+
+    'account_name' => 'Conta',
+    'balance' => 'Saldo',
+
     'list' => 'Listagem geral',
+
+    'observation' => 'Observação',
+    'description' => 'Descrição',
+
+    'tag' => 'Nota',
+
+    'option' => 'Escolha uma opção',
 
     'save' => 'Registro salvo com sucesso!',
     'fail' => 'Erro ao inserir registro!',

@@ -28,6 +28,11 @@
     <!-- Admin Stye -->
     <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
+    <!-- JQuery -->
+    <script src="{{URL::asset('js/jquery.min.js')}}"></script>
+    <script src="{{URL::asset('js/combobox.js')}}"></script>
+
+
     <!-- new fields html5 firefox-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webshim/1.15.10/dev/polyfiller.js"></script>
     <script>
@@ -53,13 +58,13 @@
 
 <body>
 <div class="brand clearfix">
-    <a href="index.html" class="logo"><img src="img/logo.jpg" class="img-responsive" alt=""></a>
+    <a href="index.html" class="logo"><img src="{{url('/')}}/img/logo.jpg" class="img-responsive" alt=""></a>
     <span class="menu-btn"><i class="fa fa-bars"></i></span>
     <ul class="ts-profile-nav">
         <li><a href="#">Help</a></li>
         <li><a href="#">Settings</a></li>
         <li class="ts-account">
-            <a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">{{ Auth::user()->name }}<i class="fa fa-angle-down hidden-side"></i></a>
+            <a href="#"><img src="{{url('/')}}/img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">{{ Auth::user()->name }}<i class="fa fa-angle-down hidden-side"></i></a>
             <ul>
                 <li><a href="{{ url('/account') }}">{{ trans('messages.account') }}</a></li>
                 <li><a href="#">{{ trans('messages.edit_account') }}</a></li>
@@ -86,11 +91,11 @@
                     <li><a href="{{url('/types')}}"><i class="fa fa-book"></i>{{ trans('menu.add_type_tithe') }}</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-money"></i> {{ trans('menu.expensives') }}</a>
+            <li><a href="#"><i class="fa fa-money"></i> {{ trans('menu.expenses') }}</a>
                 <ul>
-                    <li><a href="#"><i class="fa fa-bank"></i>{{ trans('menu.add_account') }}</a></li>
-                    <li><a href="#"><i class="fa fa-bars"></i>{{ trans('menu.add_category') }}</a></li>
-                    <li><a href="#"><i class="fa fa-calculator"></i>{{ trans('menu.expensive') }}</a></li>
+                    <li><a href="{{url('/accounts')}}"><i class="fa fa-bank"></i>{{ trans('menu.add_account') }}</a></li>
+                    <li><a href="{{url('/categories')}}"><i class="fa fa-bars"></i>{{ trans('menu.category') }}</a></li>
+                    <li><a href="{{url('/expenses')}}"><i class="fa fa-calculator"></i>{{ trans('menu.expense') }}</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-pie-chart"></i> {{ trans('menu.charts') }}</a>
@@ -102,7 +107,7 @@
             </li>
             <li><a href="#"><i class="fa fa-cog"></i> {{ trans('menu.administration') }}</a>
                 <ul>
-                    <li><a href="#"><i class="fa fa-child"></i> {{ trans('menu.users') }}</a></li>
+                    <li><a href="{{url('/users')}}"><i class="fa fa-child"></i> {{ trans('menu.users') }}</a></li>
                 </ul>
             </li>
         </ul>

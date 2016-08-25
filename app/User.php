@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -23,4 +24,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getUsers(){
+        $data = DB::table('users as u')
+            ->select('u.id',
+                'u.name',
+                'u.email',
+                'u.created_at',
+                'u.updated_at'
+            )
+            ->get();
+
+        return $data;
+    }
 }

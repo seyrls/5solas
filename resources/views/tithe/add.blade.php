@@ -9,7 +9,7 @@
 
                 <!-- Zero Configuration Table -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{trans('messages.details')}}</div>
+                    <div class="panel-heading">{{trans('menu.add_tithe')}}</div>
                     <div class="panel-body">
                         <div class="well">
                             <a href="{{url('tithes/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_tithe')}}</a>
@@ -25,24 +25,23 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{trans('forms.member_name')}}</label>
+                                <label class="col-sm-2 control-label">{{trans('forms.type')}}</label>
                                 <div class="col-sm-10">
-                                    <select class="selectpicker" data-selected-text-format="count" name="member_id" required>
-                                        @foreach($member as $m)
-                                            <option value="{{$m->id}}">{{$m->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    {!! $family !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{trans('forms.member_name')}}</label>
+                                <div class="col-sm-10" id="member">
+
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.type')}}</label>
                                 <div class="col-sm-10">
-                                    <select class="selectpicker" data-selected-text-format="count" name="type_id" required>
-                                        @foreach($type as $t)
-                                            <option value="{{$t->id}}">{{$t->type}}</option>
-                                        @endforeach
-                                    </select>
+                                        {!! $type !!}
                                 </div>
                             </div>
 

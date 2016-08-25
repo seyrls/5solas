@@ -21,6 +21,7 @@ return [
 
     'tithes' => 'Dizímos',
     'add_tithe' => 'Adicionar dizímo',
+    'edit_tithe' => 'Editar dizímo',
     'list_tithe' => 'Listar dizímos',
     'add_type_tithe' => 'Tipos',
 
@@ -28,17 +29,38 @@ return [
     'add_type' => 'Adicionar tipos',
     'list_type' => 'Listar tipos',
 
-
-    'expensives' => 'Gastos',
+    'expense' => 'Despesas',
     'add_account' => 'Contas',
-    'add_category' => 'Categorias',
     'add_subcategory' => 'Subcategorias',
-    'expensive' => 'Despesas',
+    'expenses' => 'Gastos',
+
+    'add_category' => 'Adicionar categorias',
+    'edit_category' => 'Editar categorias',
+    'category' => 'Categoria',
+    'list_category' => 'Listar categorias',
+
+    'add_subcategory' => 'Adicionar subcategorias',
+    'edit_subcategory' => 'Editar subcategorias',
+    'subcategory' => 'Subcategoria',
+    'list_subcategory' => 'Listar subcategorias',
+
+    'add_account' => 'Adicionar conta',
+    'edit_account' => 'Editar conta',
+    'account' => 'Contas',
+    'list_account' => 'Listar contas',
+
+    'expense' => 'Despesa',
+    'expenses' => 'Despesas',
+    'add_expense' => 'Adicionar despesa',
+    'edit_expense' => 'Editar despesa',
+    'list_expense' => 'Listar despesas',
 
     'charts' => 'Relatórios',
 
     'administration' => 'Administração',
     'users' => 'Usuários',
+    'add_user' => 'Adicionar usuário',
+    'list_user' => 'Listar usuários',
 
     'add' => 'Adicionar',
     'edit' => 'Editar',

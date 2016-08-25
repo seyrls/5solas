@@ -9,22 +9,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
 Use App\Member;
+use Illuminate\Support\Facades\View;
 
 class DashboardController extends Controller
 {
     public function index() {
+        $data = "";
         if (Auth::check()){
-            $member = Member::count();
-            $data = User::count();
-            return view('dashboard.index', compact('data'), compact('member'));
+            $data['member'] = Member::count();
+            $data['data'] = User::count();
+
+            return View::make('dashboard.index', $data);
         }else{
             return Redirect::to('/');
         }
     }
 
     public function show() {
-        $user = User::find(Auth::user()->id);
+        $data['user'] = User::find(Auth::user()->id);
 
-        return view('user.account', compact('user'));
+        return View::make('user.account', $data);
     }
 }

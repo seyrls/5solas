@@ -20,4 +20,5 @@ return [
     'login' => 'ACESSAR',
     'forgot_password' => 'Esqueceu a senha?',
     'signin' => 'Acesso ao sistema',
+    'error' => 'Erro ao acessar o sistema. Usuário ou senha inválidos'
 ];

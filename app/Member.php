@@ -21,4 +21,16 @@ class Member extends Model
 
         return $data;
     }
+
+    public function getMembers($id){
+        //DB::enableQueryLog();
+
+        $data = DB::table('members as m')
+            ->where('m.family_id', '=', $id)
+            ->select('m.name','m.id')
+            ->get();
+
+        //dd(DB::getQueryLog());
+        return $data;
+    }
 }

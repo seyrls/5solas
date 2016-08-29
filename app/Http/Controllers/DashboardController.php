@@ -8,16 +8,22 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
-Use App\Member;
+use App\Member;
+use App\Tithe;
+use App\Account;
 use Illuminate\Support\Facades\View;
 
 class DashboardController extends Controller
 {
     public function index() {
         $data = "";
+        $tithes = new Tithe();
+        $account = new Account();
         if (Auth::check()){
             $data['member'] = Member::count();
             $data['data'] = User::count();
+            $data['tithes'] = $tithes->getCountTithes();
+            $data['balance'] = $account->getSumBalance();
 
             return View::make('dashboard.index', $data);
         }else{

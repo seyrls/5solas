@@ -29,6 +29,19 @@ class Tithe extends Model
             ->get();
 
         //dd(DB::getQueryLog());
+
         return $data;
+    }
+
+    public function getCountTithes(){
+        //DB::enableQueryLog();
+
+        $data = DB::table('tithes as t')
+            ->sum('t.amount');
+
+        //dd(DB::getQueryLog());
+
+        return $data;
+
     }
 }

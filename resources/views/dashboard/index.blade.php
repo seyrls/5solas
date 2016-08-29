@@ -25,7 +25,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body bk-success text-light">
                                         <div class="stat-panel text-center">
-                                            <div class="stat-panel-number h1 ">R$ 8</div>
+                                            <div class="stat-panel-number h1 ">{{trans('forms.symbol_money') . number_format($balance,2)}}</div>
                                             <div class="stat-panel-title text-uppercase">{{trans('messages.balances')}}</div>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body bk-warning text-light">
                                         <div class="stat-panel text-center">
-                                            <div class="stat-panel-number h1 ">R$ 18</div>
+                                            <div class="stat-panel-number h1 ">{{trans('forms.symbol_money') . number_format($tithes,2)}}</div>
                                             <div class="stat-panel-title text-uppercase">{{trans('messages.amount_tithes')}}</div>
                                         </div>
                                     </div>

@@ -13,11 +13,11 @@ class Member extends Model
 
     public function getFamilies(){
         $data = DB::table('members as m')
-            ->join('families as f', 'f.id', '=', 'm.family_id')
-            ->select('f.name as family',
-                'm.*'
-            )
-            ->get();
+                    ->join('families as f', 'f.id', '=', 'm.family_id')
+                    ->select('f.name as family',
+                            'm.*'
+                    )
+                    ->get();
 
         return $data;
     }

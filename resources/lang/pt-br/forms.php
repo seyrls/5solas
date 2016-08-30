@@ -44,6 +44,8 @@ return [
 
     'symbol_money' => 'R$',
 
+    'image' => 'Imagem',
+
     'phone_placeholder' => 'DDD + NÚMERO',
     'email_placeholder' => 'Informe seu e-mail: xxx@email.com',
 

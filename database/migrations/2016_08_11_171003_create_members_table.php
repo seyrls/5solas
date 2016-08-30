@@ -21,6 +21,8 @@ class CreateMembersTable extends Migration
             $table->bigInteger('telephone')->nullable();
             $table->bigInteger('cellphone')->nullable();
             $table->string('email', 60)->nullable();
+            $table->string('image', 150)->nullable();
+            $table->string('path', 150)->nullable();
             $table->char('gender',1)->nullable();
             $table->boolean('status')->default('1');
             $table->timestamps();

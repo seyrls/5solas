@@ -49,6 +49,7 @@
                                 <th>{{trans('messages.cellphone')}}</th>
                                 <th>{{trans('messages.email')}}</th>
                                 <th>{{trans('messages.gender')}}</th>
+                                <th>{{trans('messages.photo')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -63,6 +64,7 @@
                                 <th>{{trans('messages.cellphone')}}</th>
                                 <th>{{trans('messages.email')}}</th>
                                 <th>{{trans('messages.gender')}}</th>
+                                <th>{{trans('messages.photo')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -79,6 +81,7 @@
                                         <td>{{$d->cellphone}}</td>
                                         <td>{{$d->email}}</td>
                                         <td>{{$d->gender}}</td>
+                                        <td><img src="{{$d->image}}" width="75" height="75"></td>
                                         <td>{{$d->created_at}}</td>
                                         <td>{{$d->updated_at}}</td>
                                         <td>
@@ -106,7 +109,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                         </div>
-                        <form method="post" action="{{url('member/delete')}}">
+                        <form method="post" action="{{url('members/delete')}}">
                             <div class="modal-body">
                                 <p>Deseja apagar o registro?</p>
                                 <div id="name"></div>

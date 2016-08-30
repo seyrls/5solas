@@ -22,7 +22,7 @@ class UserController extends Controller
             $data['data'] = $user->getUsers();
             return View::make('user.index', $data);
         }else{
-            return Redirect::to('/');
+            return Redirect::to('/logout');
         }
     }
 

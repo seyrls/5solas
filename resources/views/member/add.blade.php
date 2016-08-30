@@ -17,7 +17,7 @@
                             <a href="{{url('members')}}" class="btn btn-success btn-sm">{{trans('menu.list_member')}}</a>
                         </div>
 
-                        <form method="post" class="form-horizontal" action="{{url('members/save')}}">
+                        <form method="post" class="form-horizontal" action="{{url('members/save')}}" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.family_name')}}</label>
@@ -82,6 +82,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{trans('forms.image')}}</label>
+                                <div class="col-sm-6">
+                                    <input name="image" type="file">
+                                    <div id="errorBlock43" class="help-block"></div>
+                                </div>
+                            </div>
 
                             <input type="hidden" name="status" value="1">
 

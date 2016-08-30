@@ -55,7 +55,7 @@ return [
     'description' => 'Descrição',
 
     'tag' => 'Nota',
-
+    'photo' => 'Foto',
     'option' => 'Escolha uma opção',
 
     'save' => 'Registro salvo com sucesso!',

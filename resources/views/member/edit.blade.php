@@ -17,7 +17,7 @@
                             <a href="{{url('members')}}" class="btn btn-success btn-sm">{{trans('menu.list_member')}}</a>
                         </div>
 
-                        <form method="post" class="form-horizontal" action="{{url('members/update')}}">
+                        <form method="post" class="form-horizontal" action="{{url('members/update')}}" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.family_name')}}</label>
@@ -88,6 +88,14 @@
                                             <option value="f" selected>{{trans('forms.female')}}</option>
                                         @endif
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{trans('forms.image')}}</label>
+                                <div class="col-sm-6">
+                                    <img src="{{$data->image}}">
+                                    <input name="image" type="file">
                                 </div>
                             </div>
 

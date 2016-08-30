@@ -37,7 +37,24 @@ class Tithe extends Model
         //DB::enableQueryLog();
 
         $data = DB::table('tithes as t')
+            ->where(DB::raw('YEAR(t.period)'), '=', DB::raw('YEAR(now())'))
+            ->where(DB::raw('MONTH(t.period)'), '=', DB::raw('MONTH(now())'))
             ->sum('t.amount');
+
+        //dd(DB::getQueryLog());
+
+        return $data;
+    }
+
+    public function getTithesMonth(){
+        //DB::enableQueryLog();
+
+        $data = DB::table('tithes as t')
+            ->groupBy(DB::raw('month(t.period)'))
+            ->select(DB::raw('DATE_FORMAT(t.period,\'%M\') as month'),
+            DB::raw('DATE_FORMAT(t.period,\'%Y\') as year'),
+            DB::raw('SUM(amount) AS total'))
+            ->get();
 
         //dd(DB::getQueryLog());
 

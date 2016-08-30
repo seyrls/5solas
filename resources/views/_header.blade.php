@@ -28,6 +28,9 @@
     <!-- Admin Stye -->
     <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
+
+
     <!-- JQuery -->
     <script src="{{URL::asset('js/jquery.min.js')}}"></script>
     <script src="{{URL::asset('js/combobox.js')}}"></script>

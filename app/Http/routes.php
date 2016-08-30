@@ -35,7 +35,7 @@ Route::get('/members/add', 'MemberController@add');
 Route::post('/members/save', 'MemberController@save');
 Route::get('/members/edit/{id}', 'MemberController@edit');
 Route::post('/members/update', 'MemberController@update');
-Route::get('/members/delete', 'MemberController@delete');
+Route::post('/members/delete', 'MemberController@delete');
 
 /*Type routes*/
 Route::get('/types', 'TypeController@index');

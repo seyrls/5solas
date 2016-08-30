@@ -24,10 +24,7 @@ class LoginController extends Controller
     public function index()
     {
         if (Auth::check()){
-            $data['member'] = Member::count();
-            $data['data'] = User::count();
-
-            return View::make('dashboard.index', $data);
+            return Redirect::to('/dashboard');
         }else{
             Auth::logout();
             return View::make('login');

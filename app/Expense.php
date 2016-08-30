@@ -14,8 +14,9 @@ class Expense extends Model
             ->join('accounts as ac', 'ex.account_id', '=', 'ac.id')
             ->join('subcategories as sc', 'ex.subcategory_id' ,'=', 'sc.id')
             ->join('categories as c', 'sc.category_id', '=', 'c.id')
-            ->where('ex.date', '>', DB::raw('CURDATE() - INTERVAL 30 DAY'))
-            ->where('ex.date', '<=', DB::raw('CURDATE()'))
+            ->where(DB::raw('YEAR(ex.date)'), '=', DB::raw('YEAR(now())'))
+            ->where(DB::raw('MONTH(ex.date)'), '=', DB::raw('MONTH(now())'))
+
             ->select('ex.id',
                       'ex.description',
                       'ex.observation',
@@ -32,5 +33,19 @@ class Expense extends Model
         //dd(DB::getQueryLog());
 
         return $data;
+    }
+
+    public function getCountExpenses(){
+        //DB::enableQueryLog();
+
+        $data = DB::table('expenses as e')
+            ->where(DB::raw('YEAR(e.date)'), '=', DB::raw('YEAR(now())'))
+            ->where(DB::raw('MONTH(e.date)'), '=', DB::raw('MONTH(now())'))
+            ->sum('e.amount');
+
+        //dd(DB::getQueryLog());
+
+        return $data;
+
     }
 }

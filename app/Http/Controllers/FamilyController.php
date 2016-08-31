@@ -8,21 +8,23 @@ use App\Family;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Support\Facades\View;
 
 class FamilyController extends Controller
 {
     public function index() {
         if (Auth::check()){
-            $data = Family::all();
-            return view('family.index', compact('data'));
+            $data['data'] = Family::all();
+            return View::make('family.index', $data);
 
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 
     public function add(){
-        return view('family.add');
+        return View::make('family.add');
     }
 
     public function save(Request $request){
@@ -45,17 +47,17 @@ class FamilyController extends Controller
             $family->name = $request->input('name');
             $family->address = $request->input('address');
 
-            $msg = $family->save();
-            $data = $family->all();
+            $data['msg'] = $family->save();
+            $data['data'] = $family->all();
 
-            return view('family.index', compact('msg'), compact('data'));
+            return View::make('family.index', $data);
         }
     }
 
     public function edit($id){
-        $data = Family::find($id);
+        $data['data'] = Family::find($id);
 
-        return view('family.edit', compact('data'));
+        return View::make('family.edit', $data);
     }
 
     public function update(Request $request){
@@ -64,25 +66,25 @@ class FamilyController extends Controller
         $family->name = $request->input('name');
         $family->address = $request->input('address');
 
-        $msg = $family->save();
-        $data = $family->all();
+        $data['msg'] = $family->save();
+        $data['data'] = $family->all();
 
-        return view('family.index', compact('msg'), compact('data'));
+        return View::make('family.index', $data);
     }
 
     public function delete(Request $request){
         $family = Family::destroy($request->id);
 
         if ($family ==1){
-            $data = $family->all();
-            $msg = true;
+            $data['data'] = $family->all();
+            $data['msg'] = true;
 
-            return view('family.index', compact('msg'), compact('data'));
+            return View::make('family.index', $data);
         } else{
-            $data = $family->all();
-            $msg = false;
+            $data['data'] = $family->all();
+            $data['msg'] = false;
 
-            return view('family.index', compact('msg'), compact('data'));
+            return View::make('family.index', $data);
         }
 
     }

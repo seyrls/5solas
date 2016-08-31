@@ -10,6 +10,7 @@ use Validator;
 use Illuminate\Support\Facades\View;
 use App\Account;
 
+
 class AccountController extends Controller
 {
     public function index() {
@@ -20,7 +21,8 @@ class AccountController extends Controller
 
             return View::make('account.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

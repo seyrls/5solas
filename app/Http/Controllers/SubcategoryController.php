@@ -22,7 +22,8 @@ class SubcategoryController extends Controller
 
             return View::make('subcategory.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

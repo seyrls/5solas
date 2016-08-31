@@ -18,7 +18,8 @@ class TypeController extends Controller
             $data['data'] = Type::all();
             return View::make('type.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

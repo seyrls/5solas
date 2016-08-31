@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $tithes = new Tithe();
         $account = new Account();
         $expense = new Expense();
+
         if (Auth::check()){
             $data['member'] = Member::count();
             $data['data'] = User::count();
@@ -31,7 +32,8 @@ class DashboardController extends Controller
 
             return View::make('dashboard.index', $data);
         }else{
-            return Redirect::to('/logout');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

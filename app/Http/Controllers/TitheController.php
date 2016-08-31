@@ -25,7 +25,8 @@ class TitheController extends Controller
 
             return View::make('tithe.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

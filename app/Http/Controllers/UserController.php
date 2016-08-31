@@ -22,7 +22,8 @@ class UserController extends Controller
             $data['data'] = $user->getUsers();
             return View::make('user.index', $data);
         }else{
-            return Redirect::to('/logout');
+            Auth::logout();
+            return View::make('login');
         }
     }
 
@@ -56,6 +57,56 @@ class UserController extends Controller
                 $data['data'] = User::all();
                 $data['msg'] = false;
             }
+
+            return View::make('user.index', $data);
+        }
+
+    }
+
+    public function edit($id){
+        $data['data'] = User::find($id);
+
+        return View::make('user.edit', $data);
+    }
+
+    public function update(Request $request){
+        $rules = array(
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('users')
+                ->withErrors($validator)
+                ->withInput($request->except('name'));
+        } else {
+            // store
+            $user = User::find($request->id);
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = $request->input('password');
+
+            $data['msg'] = $user->save();
+            $data['data'] = $user->all();
+
+            return View::make('user.index', $data);
+        }
+    }
+
+    public function delete(Request $request){
+        $user = User::destroy($request->id);
+
+        if ($user ==1){
+            $data['data'] = User::all();
+            $data['msg'] = true;
+
+            return View::make('user.index', $data);
+        } else{
+            $data['data'] = User::all();
+            $data['msg'] = false;
 
             return View::make('user.index', $data);
         }

@@ -20,7 +20,8 @@ class CategoryController extends Controller
 
             return View::make('category.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

@@ -18,7 +18,6 @@ return [
     'main' => 'Principal',
     'dashboard' => 'Painel',
     'type' => 'Tipo',
-
     'family' => 'Família',
     'members' => 'Membros',
     'member' => 'Membro',
@@ -39,24 +38,22 @@ return [
     'created_at' => 'Adicionado em',
     'updated_at' => 'Atualizado em',
     'option' => 'Opção',
-
     'tithe' => 'Dizímo',
     'period' => 'Período',
-
     'category' => 'Categoria',
     'subcategory' => 'Subcategoria',
-
     'account_name' => 'Conta',
     'balance' => 'Saldo',
-
     'list' => 'Listagem geral',
-
     'observation' => 'Observação',
     'description' => 'Descrição',
-
     'tag' => 'Nota',
     'photo' => 'Foto',
     'option' => 'Escolha uma opção',
+    'city' => 'Cidade',
+    'state' => 'Estado',
+    'zip' => 'CEP',
+    'logo' => 'Logotipo',
 
     'save' => 'Registro salvo com sucesso!',
     'fail' => 'Erro ao inserir registro!',

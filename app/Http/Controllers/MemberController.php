@@ -28,7 +28,8 @@ class MemberController extends Controller
 
             return View::make('member.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 
@@ -140,5 +141,11 @@ class MemberController extends Controller
             return View::make('member.index', $data);
         }
 
+    }
+
+    public function detail($id){
+        $data['data'] = Member::find($id);
+
+        return View::make('member.detail', $data);
     }
 }

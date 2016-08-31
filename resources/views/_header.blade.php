@@ -111,6 +111,7 @@
             <li><a href="#"><i class="fa fa-cog"></i> {{ trans('menu.administration') }}</a>
                 <ul>
                     <li><a href="{{url('/users')}}"><i class="fa fa-child"></i> {{ trans('menu.users') }}</a></li>
+                    <li><a href="{{url('/entities')}}"><i class="fa fa-home"></i> {{ trans('menu.entities') }}</a></li>
                 </ul>
             </li>
         </ul>

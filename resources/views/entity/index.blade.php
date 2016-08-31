@@ -12,8 +12,8 @@
                     <div class="panel-heading">{{trans('messages.details')}}</div>
                     <div class="panel-body">
                         <div class="well">
-                            <a href="{{url('members/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_member')}}</a>
-                            <a href="{{url('members')}}" class="btn btn-success btn-sm">{{trans('menu.list_member')}}</a>
+                            <a href="{{url('entities/add')}}" class="btn btn-info btn-sm">{{trans('menu.add_entity')}}</a>
+                            <a href="{{url('entities')}}" class="btn btn-success btn-sm">{{trans('menu.list_entity')}}</a>
                         </div>
 
                         @if($errors->any())
@@ -42,14 +42,14 @@
                         <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>{{trans('messages.family')}}</th>
                                 <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.birthday')}}</th>
+                                <th>{{trans('messages.address')}}</th>
+                                <th>{{trans('messages.city')}}</th>
+                                <th>{{trans('messages.state')}}</th>
+                                <th>{{trans('messages.zip')}}</th>
                                 <th>{{trans('messages.telephone')}}</th>
-                                <th>{{trans('messages.cellphone')}}</th>
                                 <th>{{trans('messages.email')}}</th>
-                                <th>{{trans('messages.gender')}}</th>
-                                <th>{{trans('messages.photo')}}</th>
+                                <th>{{trans('messages.logo')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -57,14 +57,14 @@
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>{{trans('messages.family')}}</th>
                                 <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.birthday')}}</th>
+                                <th>{{trans('messages.address')}}</th>
+                                <th>{{trans('messages.city')}}</th>
+                                <th>{{trans('messages.state')}}</th>
+                                <th>{{trans('messages.zip')}}</th>
                                 <th>{{trans('messages.telephone')}}</th>
-                                <th>{{trans('messages.cellphone')}}</th>
                                 <th>{{trans('messages.email')}}</th>
-                                <th>{{trans('messages.gender')}}</th>
-                                <th>{{trans('messages.photo')}}</th>
+                                <th>{{trans('messages.logo')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
                                 <th>{{trans('messages.updated_at')}}</th>
                                 <th>{{trans('messages.option')}}</th>
@@ -74,20 +74,20 @@
                             @if(!empty($data))
                                 @foreach($data as $d)
                                     <tr>
-                                        <td>{{$d->family}}</td>
                                         <td>{{$d->name}}</td>
-                                        <td>{{$d->birthday}}</td>
+                                        <td>{{$d->address}}</td>
+                                        <td>{{$d->city}}</td>
+                                        <td>{{$d->state}}</td>
+                                        <td>{{$d->zip}}</td>
                                         <td>{{$d->telephone}}</td>
-                                        <td>{{$d->cellphone}}</td>
                                         <td>{{$d->email}}</td>
-                                        <td>{{$d->gender}}</td>
-                                        <td><img src="{{$d->image}}" width="75" height="75"></td>
+                                        <td><img src="{{$d->logo}}" width="75" height="75"></td>
                                         <td>{{$d->created_at}}</td>
                                         <td>{{$d->updated_at}}</td>
                                         <td>
-                                            <a href="{{url('members/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
+                                            <a href="{{url('entities/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
+
                                             <a href="#myModal"  class="btn btn-default btn-xs xx" data-id="{{$d->id}}" data-toggle="modal" onclick="teste('{{$d->id}}', '{{$d->name}}')">{{trans('menu.delete')}}</a>
-                                            <a href="{{url('members/detail/'.$d->id)}}" class="btn btn-primary btn-xs">{{trans('menu.detail')}}</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -100,7 +100,6 @@
                 </div>
             </div>
 
-
             <!-- Modal -->
             <div class="modal fade" name="myModal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
@@ -109,7 +108,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                         </div>
-                        <form method="post" action="{{url('members/delete')}}">
+                        <form method="post" action="{{url('entities/delete')}}">
                             <div class="modal-body">
                                 <p>Deseja apagar o registro?</p>
                                 <div id="name"></div>

@@ -10,6 +10,7 @@ use Validator;
 use Illuminate\Support\Facades\View;
 use App\Expense;
 use App\Library\Combobox;
+use App\Subcategory;
 
 class ExpenseController extends Controller
 {
@@ -22,7 +23,8 @@ class ExpenseController extends Controller
 
             return View::make('expense.index', $data);
         }else{
-            return Redirect::to('/');
+            Auth::logout();
+            return View::make('login');
         }
     }
 

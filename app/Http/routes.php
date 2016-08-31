@@ -36,6 +36,7 @@ Route::post('/members/save', 'MemberController@save');
 Route::get('/members/edit/{id}', 'MemberController@edit');
 Route::post('/members/update', 'MemberController@update');
 Route::post('/members/delete', 'MemberController@delete');
+Route::get('/members/detail/{id}', 'MemberController@detail');
 
 /*Type routes*/
 Route::get('/types', 'TypeController@index');
@@ -81,6 +82,9 @@ Route::post('/accounts/delete', 'AccountController@delete');
 Route::get('/users', 'UserController@index');
 Route::get('/users/add', 'UserController@add');
 Route::post('/users/save', 'UserController@save');
+Route::get('/users/edit/{id}', 'UserController@edit');
+Route::post('/users/update', 'UserController@update');
+Route::post('/users/delete', 'UserController@delete');
 
 /*Expenses routes*/
 Route::get('/expenses', 'ExpenseController@index');
@@ -89,6 +93,14 @@ Route::post('/expenses/save', 'ExpenseController@save');
 Route::get('/expenses/edit/{id}', 'ExpenseController@edit');
 Route::post('/expenses/update', 'ExpenseController@update');
 Route::post('/expenses/delete', 'ExpenseController@delete');
+
+/*Entities routes*/
+Route::get('/entities', 'EntityController@index');
+Route::get('/entities/add', 'EntityController@add');
+Route::post('/entities/save', 'EntityController@save');
+Route::get('/entities/edit/{id}', 'EntityController@edit');
+Route::post('/entities/update', 'EntityController@update');
+Route::post('/entities/delete', 'EntityController@delete');
 
 
 /*See public/js/combobox.js for more details*/

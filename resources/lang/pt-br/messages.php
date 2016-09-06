@@ -54,6 +54,11 @@ return [
     'state' => 'Estado',
     'zip' => 'CEP',
     'logo' => 'Logotipo',
+    'total' => 'Total',
+    'tithes' => 'Dizimos',
+    'year_tithes' => 'Dízimos do ano de ',
+    'tithes_of' => 'Dízimos de ',
+    'year' => 'Ano',
 
     'save' => 'Registro salvo com sucesso!',
     'fail' => 'Erro ao inserir registro!',

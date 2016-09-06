@@ -103,7 +103,7 @@
             </li>
             <li><a href="#"><i class="fa fa-pie-chart"></i> {{ trans('menu.charts') }}</a>
                 <ul>
-                    <li><a href="#"><i class="fa fa-envelope"></i>{{ trans('menu.tithes') }}</a></li>
+                    <li><a href="{{url('reports/tithesmember')}}"><i class="fa fa-envelope"></i>{{ trans('menu.tithes') }}</a></li>
                     <li><a href="#"><i class="fa fa-users"></i>{{ trans('menu.families') }}</a></li>
                     <li><a href="#"><i class="fa fa-book"></i>{{ trans('menu.expensive') }}</a></li>
                 </ul>

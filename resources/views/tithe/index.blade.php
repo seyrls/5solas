@@ -42,6 +42,7 @@
                         <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
+                                <th>{{trans('messages.year')}}</th>
                                 <th>{{trans('messages.member')}}</th>
                                 <th>{{trans('messages.period')}}</th>
                                 <th>{{trans('messages.tithe')}}</th>
@@ -53,6 +54,7 @@
                             </thead>
                             <tfoot>
                             <tr>
+                                <th>{{trans('messages.year')}}</th>
                                 <th>{{trans('messages.member')}}</th>
                                 <th>{{trans('messages.period')}}</th>
                                 <th>{{trans('messages.tithe')}}</th>
@@ -66,6 +68,7 @@
                             @if(!empty($data))
                                 @foreach($data as $d)
                                     <tr>
+                                        <td>{{$d->year}}</td>
                                         <td>{{$d->name}}</td>
                                         <td>{{$d->period}}</td>
                                         <td>{{trans('forms.symbol_money')}} {{$d->amount}}</td>

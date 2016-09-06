@@ -102,6 +102,11 @@ Route::get('/entities/edit/{id}', 'EntityController@edit');
 Route::post('/entities/update', 'EntityController@update');
 Route::post('/entities/delete', 'EntityController@delete');
 
+/*Reports routes*/
+Route::get('/reports/tithesmember', 'ReportController@totalTithesMember');
+Route::get('/reports/tithesdetail/{id}', 'ReportController@tithesDetail');
+Route::match(['get', 'post'], '/reports/tithesperiod', 'ReportController@tithesPeriod');
+
 
 /*See public/js/combobox.js for more details*/
 Route::get('/combobox/subcategory/{id}', function ($id) {

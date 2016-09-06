@@ -11,6 +11,10 @@ class Member extends Model
         return $this->belongsTo('App\Family');
     }
 
+    public function tithe(){
+        return $this->hasMany('App\Tithe');
+    }
+
     public function getFamilies(){
         $data = DB::table('members as m')
                     ->join('families as f', 'f.id', '=', 'm.family_id')

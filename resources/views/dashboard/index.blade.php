@@ -86,18 +86,11 @@
     var ctx = document.getElementById("bars");
     var data = {
         labels: [
-            "{{$month[0]->month}}",
-            "{{$month[1]->month}}",
-            "{{$month[2]->month}}",
-            "{{$month[3]->month}}",
-            "{{$month[4]->month}}",
-            "{{$month[5]->month}}",
-            "{{$month[6]->month}}",
-            "{{$month[7]->month}}",
-            "{{$month[8]->month}}",
-            "{{$month[9]->month}}",
-            "{{$month[10]->month}}",
-            "{{$month[11]->month}}"
+                @if (!is_null($month))
+                    @foreach ($month as $m)
+                    "{{$m->month}}",
+                    @endforeach
+                @endif
         ],
         datasets: [
             {
@@ -131,18 +124,11 @@
                     'rgba(63,114,155, 1)',
                 ],
                 data: [
-                    {{$month[0]->total}},
-                    {{$month[1]->total}},
-                    {{$month[2]->total}},
-                    {{$month[3]->total}},
-                    {{$month[4]->total}},
-                    {{$month[5]->total}},
-                    {{$month[6]->total}},
-                    {{$month[7]->total}},
-                    {{$month[8]->total}},
-                    {{$month[9]->total}},
-                    {{$month[10]->total}},
-                    {{$month[11]->total}}
+                    @if (!is_null($month))
+                        @foreach ($month as $m)
+                            "{{$m->total}}",
+                        @endforeach
+                    @endif
                 ],
             }
         ]
@@ -165,9 +151,15 @@
         datasets: [
             {
                 data: [
-                    {{number_format((($balance / ($balance+$expense+$tithes))*100),2)}},
-                    {{number_format((($expense / ($balance+$expense+$tithes))*100),2)}},
-                    {{number_format((($tithes / ($balance+$expense+$tithes))*100),2)}},
+                        @if(!empty($balance))
+                            {{number_format((($balance / ($balance+$expense+$tithes))*100),2)}},
+                        @endif
+                        @if (!empty($expense))
+                            {{number_format((($expense / ($balance+$expense+$tithes))*100),2)}},
+                        @endif
+                        @if (!empty($tithes))
+                            {{number_format((($tithes / ($balance+$expense+$tithes))*100),2)}},
+                        @endif
                 ],
                 backgroundColor: [
                     'rgba(147,197,75, 0.7)',

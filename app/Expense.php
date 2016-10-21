@@ -9,8 +9,20 @@ class Expense extends Model
 {
     public function getExpenses(){
         //DB::enableQueryLog();
-
+        
         $data = DB::table('expenses as ex')
+                ->join('subcategories as sc', 'ex.subcategory_id', '=', 'sc.id')
+                ->join('categories as c','sc.category_id', '=', 'c.id')
+                ->join('accounts as a','ex.account_id', '=', 'a.id')
+                ->groupBy('ex.subcategory_id')
+                ->groupBy('ex.account_id')
+                ->select(DB::raw('sum(ex.amount) as total'),
+                        'c.category',
+                        'sc.subcategory',
+                        'ex.created_at')
+                ->get();
+
+       /* $data = DB::table('expenses as ex')
             ->join('accounts as ac', 'ex.account_id', '=', 'ac.id')
             ->join('subcategories as sc', 'ex.subcategory_id' ,'=', 'sc.id')
             ->join('categories as c', 'sc.category_id', '=', 'c.id')
@@ -29,7 +41,7 @@ class Expense extends Model
                       'ex.created_at',
                       'ex.updated_at'
             )
-            ->get();
+            ->get();*/
         //dd(DB::getQueryLog());
 
         return $data;
@@ -37,6 +49,9 @@ class Expense extends Model
 
     public function getCountExpenses(){
         //DB::enableQueryLog();
+     
+	
+	
 
         $data = DB::table('expenses as e')
             ->where(DB::raw('YEAR(e.date)'), '=', DB::raw('YEAR(now())'))

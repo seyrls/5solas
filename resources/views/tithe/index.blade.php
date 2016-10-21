@@ -70,11 +70,11 @@
                                     <tr>
                                         <td>{{$d->year}}</td>
                                         <td>{{$d->name}}</td>
-                                        <td>{{$d->period}}</td>
+                                        <td>{{date_format(date_create($d->period), trans('forms.date_format'))}}</td>
                                         <td>{{trans('forms.symbol_money')}} {{$d->amount}}</td>
                                         <td>{{$d->type}}</td>
-                                        <td>{{$d->created_at}}</td>
-                                        <td>{{$d->updated_at}}</td>
+                                        <td>{{date_format(date_create($d->created_at), trans('forms.date_time'))}}</td>
+                                        <td>{{date_format(date_create($d->updated_at), trans('forms.date_time'))}}</td>
                                         <td>
                                             <a href="{{url('tithes/edit/'.$d->id)}}" class="btn btn-warning btn-xs">{{trans('menu.edit')}}</a>
                                             <a href="#myModal"  class="btn btn-default btn-xs xx" data-id="{{$d->id}}" data-toggle="modal" onclick="teste('{{$d->id}}', '{{$d->amount}}')">{{trans('menu.delete')}}</a>

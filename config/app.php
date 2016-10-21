@@ -158,6 +158,11 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+         * Google charts
+         * https://github.com/ConsoleTVs/Charts
+         */
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
     ],
 
@@ -205,6 +210,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        
+        /*
+         * Google charts
+         */
+        'Charts' => ConsoleTVs\Charts\Charts::class,
 
     ],
 

@@ -1,4 +1,5 @@
 @include('_header')
+
 <div class="content-wrapper">
     <div class="container-fluid">
 
@@ -63,16 +64,16 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">{{trans('messages.amount_tithes')}} / {{date('Y')}}</div>
                             <div class="panel-body">
-                                <canvas id="bars" width="400" height="300"></canvas>
+                                {!! $expenses->render() !!}
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="panel panel-default">
-                            <div class="panel-heading">{{trans('messages.balances')}} , {{trans('messages.amount_expenses')}} , {{trans('messages.amount_tithes')}} / {{date('Y')}}</div>
+                            <div class="panel-heading">{{trans('messages.amount_tithes') . "/" . date('Y')}}</div>
                             <div class="panel-body">
-                                <canvas id="pie" width="400" height="300"></canvas>
+                                {!!($chart->render())!!}
                             </div>
                         </div>
                     </div>
@@ -81,106 +82,5 @@
         </div>
     </div>
 </div>
-
-<script>
-    var ctx = document.getElementById("bars");
-    var data = {
-        labels: [
-                @if (!is_null($month))
-                    @foreach ($month as $m)
-                    "{{$m->month}}",
-                    @endforeach
-                @endif
-        ],
-        datasets: [
-            {
-                label: "{{trans('messages.amount_tithes')}}",
-                backgroundColor: [
-                    'rgba(147,197,75, 0.7)',
-                    'rgba(41,171,224, 0.7)',
-                    'rgba(244,124,60, 0.7)',
-                    'rgba(216,122,104, 0.7)',
-                    'rgba(32,80,129, 0.7)',
-                    'rgba(16,135,221, 0.7)',
-                    'rgba(59,89,152, 0.7)',
-                    'rgba(255,0,132, 0.7)',
-                    'rgba(249,72,119, 0.7)',
-                    'rgba(43,43,43, 0.7)',
-                    'rgba(221,75,57, 0.7)',
-                    'rgba(63,114,155, 0.7)',
-                ],
-                hoverBackgroundColor: [
-                    'rgba(147,197,75, 1)',
-                    'rgba(41,171,224, 1)',
-                    'rgba(244,124,60, 1)',
-                    'rgba(216,122,104, 1)',
-                    'rgba(32,80,129, 1)',
-                    'rgba(16,135,221, 1)',
-                    'rgba(59,89,152, 1)',
-                    'rgba(255,0,132, 1)',
-                    'rgba(249,72,119, 1)',
-                    'rgba(43,43,43, 1)',
-                    'rgba(221,75,57, 1)',
-                    'rgba(63,114,155, 1)',
-                ],
-                data: [
-                    @if (!is_null($month))
-                        @foreach ($month as $m)
-                            "{{$m->total}}",
-                        @endforeach
-                    @endif
-                ],
-            }
-        ]
-    };
-    var myBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: data
-    });
-</script>
-
-<script>
-    var ctx = document.getElementById("pie");
-
-    var data = {
-        labels: [
-            "{{trans('messages.balances')}}",
-            "{{trans('messages.amount_expenses')}}",
-            "{{trans('messages.amount_tithes')}}"
-        ],
-        datasets: [
-            {
-                data: [
-                        @if(!empty($balance))
-                            {{number_format((($balance / ($balance+$expense+$tithes))*100),2)}},
-                        @endif
-                        @if (!empty($expense))
-                            {{number_format((($expense / ($balance+$expense+$tithes))*100),2)}},
-                        @endif
-                        @if (!empty($tithes))
-                            {{number_format((($tithes / ($balance+$expense+$tithes))*100),2)}},
-                        @endif
-                ],
-                backgroundColor: [
-                    'rgba(147,197,75, 0.7)',
-                    'rgba(41,171,224, 0.7)',
-                    'rgba(244,124,60, 0.7)',
-                ],
-                hoverBackgroundColor: [
-                    'rgba(147,197,75, 1)',
-                    'rgba(41,171,224, 1)',
-                    'rgba(244,124,60, 1)',
-                ]
-            }]
-    };
-
-    // For a pie chart
-    var myPieChart = new Chart(ctx,{
-        type: 'pie',
-        data: data,
-
-    });
-
-</script>
 
 @include('_footer')

@@ -10,6 +10,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'date_format' => 'd/m/Y',
+    'date_time' => 'd/m/Y H:m:s',
     'user_name' => 'Nome do usuário',
     'user_email' => 'E-mail do usuário',
     'user_password' => 'Senha do usuário',

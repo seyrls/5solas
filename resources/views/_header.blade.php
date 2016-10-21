@@ -10,6 +10,8 @@
     <meta name="theme-color" content="#3e454c">
 
     <title>{{trans('messages.title')}}</title>
+    
+    {!! Charts::assets() !!}
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}">

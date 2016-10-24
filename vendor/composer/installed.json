@@ -3493,24 +3493,69 @@
         ]
     },
     {
-        "name": "consoletvs/charts",
-        "version": "1.8.5",
-        "version_normalized": "1.8.5.0",
+        "name": "jlawrence/eos",
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ConsoleTVs/Charts.git",
-            "reference": "d0e3b8e6b67723867d0ed1264da246c7d17bc25e"
+            "url": "https://github.com/jlawrence11/eos.git",
+            "reference": "25e3d0f2316cb4636000f452a8e7dcc83725a32a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/d0e3b8e6b67723867d0ed1264da246c7d17bc25e",
-            "reference": "d0e3b8e6b67723867d0ed1264da246c7d17bc25e",
+            "url": "https://api.github.com/repos/jlawrence11/eos/zipball/25e3d0f2316cb4636000f452a8e7dcc83725a32a",
+            "reference": "25e3d0f2316cb4636000f452a8e7dcc83725a32a",
+            "shasum": ""
+        },
+        "require-dev": {
+            "codeclimate/php-test-reporter": "dev-master",
+            "phpunit/phpunit": "4.*"
+        },
+        "time": "2016-03-02 22:35:41",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "jlawrence\\eos\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1+"
+        ],
+        "authors": [
+            {
+                "name": "Jon Lawrence",
+                "email": "jon@jon-lawrence.com"
+            }
+        ],
+        "description": "Parse and solve math equations without using 'eval()'.",
+        "keywords": [
+            "eos",
+            "equations",
+            "math",
+            "solve"
+        ]
+    },
+    {
+        "name": "consoletvs/charts",
+        "version": "2.0.1",
+        "version_normalized": "2.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ConsoleTVs/Charts.git",
+            "reference": "c6af81668c6cf41e588b4c10666f41a7a68c42e6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/c6af81668c6cf41e588b4c10666f41a7a68c42e6",
+            "reference": "c6af81668c6cf41e588b4c10666f41a7a68c42e6",
             "shasum": ""
         },
         "require": {
-            "php": ">=7.0.8"
+            "jlawrence/eos": "3.*"
         },
-        "time": "2016-10-19 10:55:43",
+        "time": "2016-10-23 09:42:58",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

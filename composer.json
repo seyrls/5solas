@@ -9,7 +9,7 @@
         "laravel/framework": "5.2.*",
         "intervention/image": "^2.3",
         "uxweb/sweet-alert": "~1.1",
-        "consoletvs/charts": "^1.8"
+        "consoletvs/charts": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -29,7 +29,7 @@ class DashboardController extends Controller
                 $values[] = $t->total;
             }
 
-            $data['chart'] = Charts::new ('line', 'highcharts')
+            $data['chart'] = Charts::create ('line', 'highcharts')
                     ->setTitle(trans('messages.amount_tithes') .' / '. date('Y'))
                     ->setElementLabel(trans('messages.tithes'))
                     ->setLabels($month)
@@ -47,7 +47,7 @@ class DashboardController extends Controller
                 $category[] = $ex->subcategory;
                 
             }
-            $data['expenses'] = Charts::new('donut', 'highcharts')
+            $data['expenses'] = Charts::create('donut', 'highcharts')
                                     ->setTitle('Relatório')
                                     ->setValues($total)
                                     ->setLabels($category)

@@ -25,6 +25,10 @@ class ComposerStaticInit9719be811ee3d7bbc741b4f250815385
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'j' => 
+        array (
+            'jlawrence\\eos\\' => 14,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -108,6 +112,10 @@ class ComposerStaticInit9719be811ee3d7bbc741b4f250815385
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+        ),
+        'jlawrence\\eos\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jlawrence/eos/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -361,6 +369,8 @@ class ComposerStaticInit9719be811ee3d7bbc741b4f250815385
         'ConsoleTVs\\Charts\\Charts' => __DIR__ . '/..' . '/consoletvs/charts/src/Charts.php',
         'ConsoleTVs\\Charts\\ChartsServiceProvider' => __DIR__ . '/..' . '/consoletvs/charts/src/ChartsServiceProvider.php',
         'ConsoleTVs\\Charts\\Database' => __DIR__ . '/..' . '/consoletvs/charts/src/Database.php',
+        'ConsoleTVs\\Charts\\Math' => __DIR__ . '/..' . '/consoletvs/charts/src/Math.php',
+        'ConsoleTVs\\Charts\\Multi' => __DIR__ . '/..' . '/consoletvs/charts/src/Multi.php',
         'ConsoleTVs\\Charts\\Realtime' => __DIR__ . '/..' . '/consoletvs/charts/src/Realtime.php',
         'CreateAccountsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_11_171240_create_accounts_table.php',
         'CreateBalancesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_11_171308_create_balances_table.php',
@@ -3138,6 +3148,13 @@ class ComposerStaticInit9719be811ee3d7bbc741b4f250815385
         'UxWeb\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertServiceProvider.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'jlawrence\\eos\\AdvancedFunctions' => __DIR__ . '/..' . '/jlawrence/eos/src/AdvancedFunctions.php',
+        'jlawrence\\eos\\Graph' => __DIR__ . '/..' . '/jlawrence/eos/src/Graph.php',
+        'jlawrence\\eos\\Math' => __DIR__ . '/..' . '/jlawrence/eos/src/Math.php',
+        'jlawrence\\eos\\Matrix' => __DIR__ . '/..' . '/jlawrence/eos/src/Matrix.php',
+        'jlawrence\\eos\\Parser' => __DIR__ . '/..' . '/jlawrence/eos/src/Parser.php',
+        'jlawrence\\eos\\Stack' => __DIR__ . '/..' . '/jlawrence/eos/src/Stack.php',
+        'jlawrence\\eos\\Trig' => __DIR__ . '/..' . '/jlawrence/eos/src/Trig.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

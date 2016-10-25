@@ -63,16 +63,16 @@
         },
         {
             "name": "consoletvs/charts",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ConsoleTVs/Charts.git",
-                "reference": "c6af81668c6cf41e588b4c10666f41a7a68c42e6"
+                "reference": "c473ddec3479a8be2b1bceaced53f1d74eee4986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/c6af81668c6cf41e588b4c10666f41a7a68c42e6",
-                "reference": "c6af81668c6cf41e588b4c10666f41a7a68c42e6",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/c473ddec3479a8be2b1bceaced53f1d74eee4986",
+                "reference": "c473ddec3479a8be2b1bceaced53f1d74eee4986",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +95,7 @@
                 }
             ],
             "description": "Create charts for laravel using diferent charts libraries",
-            "time": "2016-10-23 09:42:58"
+            "time": "2016-10-24 14:51:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

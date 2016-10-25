@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.cellphone')}}</label>
                                 <div class="col-sm-2">
-                                    <input name="cellphone" type="text" class="form-control" placeholder="{{trans('forms.phone_placeholder')}}">
+                                    <input name="cellphone" id="cellphone" type="text" class="form-control" placeholder="{{trans('forms.phone_placeholder')}}">
                                     <span class="help-block m-b-none">{{trans('forms.phone_placeholder')}}</span>
                                 </div>
                             </div>

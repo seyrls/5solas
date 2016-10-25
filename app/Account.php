@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class Account extends Model
 {
+    public function tithe(){
+        return $this->hasMany('App\Tithe');
+    }
+    
     public function getSumBalance(){
         //DB::enableQueryLog();
 

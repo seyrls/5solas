@@ -163,6 +163,11 @@ return [
          * https://github.com/ConsoleTVs/Charts
          */
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        
+        /*
+         * Sweetalert
+         */
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -215,6 +220,11 @@ return [
          * Google charts
          */
         'Charts' => ConsoleTVs\Charts\Charts::class,
+        
+        /*
+         * Sweetalert
+         */
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

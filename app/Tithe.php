@@ -10,6 +10,10 @@ class Tithe extends Model
     public function member(){
         return $this->belongsTo('App\Member');
     }
+    
+    public function account(){
+        return $this->belongsTo('App\Account');
+    }
 
     public function getTithe(){
         //DB::enableQueryLog();

@@ -18,6 +18,13 @@
 
                         <form method="post" class="form-horizontal" action="{{url('tithes/save')}}">
                             <div class="form-group">
+                                <label class="col-sm-2 control-label">{{trans('forms.account_name')}}</label>
+                                <div class="col-sm-10">
+                                    {!! $account !!}
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.period')}}</label>
                                 <div class="col-sm-2">
                                     <input name="period" type="date" class="form-control">
@@ -25,7 +32,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{trans('forms.type')}}</label>
+                                <label class="col-sm-2 control-label">{{trans('forms.family_name')}}</label>
                                 <div class="col-sm-10">
                                     {!! $family !!}
                                 </div>
@@ -48,7 +55,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.amount')}}</label>
                                 <div class="col-sm-2">
-                                    <input name="amount" type="text" class="form-control" placeholder="{{trans('forms.amount')}}" required>
+                                    <input name="amount" id="amount" type="text" class="form-control" placeholder="{{trans('forms.amount')}}" required>
                                 </div>
                             </div>
 

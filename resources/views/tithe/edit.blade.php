@@ -18,6 +18,13 @@
 
                         <form method="post" class="form-horizontal" action="{{url('tithes/update')}}">
                             <div class="form-group">
+                                <label class="col-sm-2 control-label">{{trans('forms.account_name')}}</label>
+                                <div class="col-sm-10">
+                                    {!!$account!!}
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.period')}}</label>
                                 <div class="col-sm-2">
                                     <input name="period" type="date" class="form-control" value="{{$data->period}}">

@@ -25,20 +25,6 @@
                             </div>
                         @endif
 
-                        @if (!empty($msg))
-                            @if($msg == true)
-                                <div class="alert alert-dismissible alert-success">
-                                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-remove"></i></button>
-                                    <strong>{{trans('messages.save')}}</strong>
-                                </div>
-                            @else
-                                <div class="alert alert-dismissible alert-danger">
-                                    <button type="button" class="close" data-dismiss="alert"><i class="fa fa-remove"></i></button>
-                                    <strong>{{trans('messages.fail')}}</strong>
-                                </div>
-                            @endif
-                        @endif
-
                         <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                             <tr>
@@ -65,6 +51,7 @@
                             </tr>
                             </tfoot>
                             <tbody>
+                                
                             @if(!empty($data))
                                 @foreach($data as $d)
                                     <tr>
@@ -97,7 +84,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{trans('messages.confirm')}}</h4>
                         </div>
                         <form method="post" action="{{url('tithes/delete')}}">
                             <div class="modal-body">

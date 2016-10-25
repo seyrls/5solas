@@ -61,5 +61,10 @@ return [
     'year' => 'Ano',
 
     'save' => 'Registro salvo com sucesso!',
-    'fail' => 'Erro ao inserir registro!',
+    'fail' => 'Erro ao inserir/excluir registro!',
+    'delete' => 'Registro excluído com sucesso!',
+    'update' => 'Registro atualizado com sucesso!',
+    'confirm' => 'Confirmação',
+    
+    
 ];

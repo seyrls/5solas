@@ -11,6 +11,7 @@ use Validator;
 use App\Tithe;
 use App\Member;
 use Illuminate\Support\Facades\View;
+use Alert;
 
 
 
@@ -18,7 +19,7 @@ class TitheController extends Controller
 {
     public function index() {
         $data = "";
-
+        
         if (Auth::check()){
             $tithe = new Tithe();
             $data['data'] = $tithe->getTithe();
@@ -37,6 +38,7 @@ class TitheController extends Controller
         $data['family'] = $combo->getComboBoxFamily();
         $data['member'] = $combo->getComboBoxMember();
         $data['type'] = $combo->getComboBoxTypes();
+        $data['account'] = $combo->getComboBoxAccount();
 
         return View::make('tithe.add', $data);
     }
@@ -53,41 +55,58 @@ class TitheController extends Controller
 
         // process the login
         if ($validator->fails()) {
+            Alert::error($validator, 'Error');
             return Redirect::to('tithes')
                 ->withErrors($validator)
                 ->withInput($request->except('tithe'));
         } else {
             // store
+            $account = \App\Account::find($request->input('account_id'));
+            $account->balance = $account->balance + $request->input('amount');
+            $account->save();
+            
             $tithe = new Tithe;
             $tithe->type_id = $request->input('type_id');
             $tithe->member_id = $request->input('member_id');
+            $tithe->account_id = $request->input('account_id');
             $tithe->period = $request->input('period');
             $tithe->amount = $request->input('amount');
 
             $data['msg'] = $tithe->save();
-            $data['data'] = $tithe->getTithe();
-
-            return View::make('tithe.index', $data);
+            
+            if ($data['msg'] == true){
+                Alert::success(trans('messages.save'), trans('messages.tithe'))->persistent(trans('menu.close'));
+                return Redirect::to('/tithes');
+            }else{
+                Alert::error(trans('messages.fail'), trans('messages.tithe'))->persistent(trans('menu.close'));
+                return Redirect::to('/tithes');
+            }
         }
     }
 
     public function edit($id){
-        //Object to create combobox
-        $combo = new ComboBox();
+        if (Auth::check()){
+            //Object to create combobox
+            $combo = new ComboBox();
 
-        //get all data
-        $data['data'] = Tithe::find($id);
+            //get all data
+            $data['data'] = Tithe::find($id);
 
-        //get family_id on Member's table
-        $family = Member::find($data['data']->member_id)->family()->get();
+            //get family_id on Member's table
+            $family = Member::find($data['data']->member_id)->family()->get();
 
-        //load html combobox
-        $data['family'] = $combo->getComboBoxFamily($family->pluck('id')[0]);
-        $data['member'] = $combo->getJqueryMember($family->pluck('id')[0]);
-        $data['type'] = $combo->getComboBoxTypes($data['data']->type_id);
+            //load html combobox
+            $data['family'] = $combo->getComboBoxFamily($family->pluck('id')[0]);
+            $data['member'] = $combo->getJqueryMember($family->pluck('id')[0]);
+            $data['type'] = $combo->getComboBoxTypes($data['data']->type_id);
+            $data['account'] = $combo->getComboBoxAccount($data['data']->account_id);
 
-        //send data to view
-        return View::make('tithe.edit', $data);
+            //send data to view
+            return View::make('tithe.edit', $data);
+        }else{
+            Auth::logout();
+            return View::make('login');
+        }
     }
 
     public function update(Request $request){
@@ -102,12 +121,17 @@ class TitheController extends Controller
 
         // process the login
         if ($validator->fails()) {
+            Alert::error($validator, trans('messages.tithe'))->persistent(trans('menu.close'));
             return Redirect::to('tithes')
                 ->withErrors($validator)
                 ->withInput($request->except('amount'));
         } else {
             // store
             $tithe = Tithe::find($request->id);
+            
+            $account = \App\Account::find($request->input('account_id'));
+            $account->balance = ($account->balance - $tithe->amount) + $request->input('amount');
+            $account->save();
 
             $tithe->type_id = $request->input('type_id');
             $tithe->member_id = $request->input('member_id');
@@ -115,9 +139,14 @@ class TitheController extends Controller
             $tithe->amount = $request->input('amount');
 
             $data['msg'] = $tithe->save();
-            $data['data'] = $tithe->getTithe();
-
-            return View::make('tithe.index', $data);
+            
+            if ($data['msg'] == true){
+                Alert::success(trans('messages.update'), trans('messages.tithe'))->persistent(trans('menu.close'));
+                return Redirect::to('/tithes');
+            }else{
+                Alert::error(trans('messages.fail'), trans('messages.tithe'))->persistent(trans('menu.close'));
+                return Redirect::to('/tithes');
+            }
         }
     }
 
@@ -127,15 +156,12 @@ class TitheController extends Controller
         $tithe = Tithe::destroy($request->id);
 
         if ($tithe ==1){
-            $data['data'] = $obj->getTithe();
-            $data['msg'] = true;
-
-            return view('tithe.index', compact('msg', 'data'));
+            Alert::success(trans('messages.delete'), trans('messages.tithe'))->persistent(trans('menu.close'));
+            return Redirect::to('/tithes');
         } else{
-            $data['data'] = $obj->getTithe();
-            $data['msg'] = false;
+            Alert::error(trans('messages.fail'), trans('messages.tithe'))->persistent(trans('menu.close'));
 
-            return View::make('tithe.index', $data);
+            return Redirect::to('/tithes');
         }
 
     }

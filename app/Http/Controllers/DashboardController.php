@@ -67,8 +67,10 @@ class DashboardController extends Controller
     }
 
     public function show() {
-        $data['user'] = User::find(Auth::user()->id);
+        if (Auth::check()){
+            $data['user'] = User::find(Auth::user()->id);
 
-        return View::make('user.account', $data);
+            return View::make('user.account', $data);
+        }
     }
 }

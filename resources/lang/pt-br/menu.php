@@ -62,6 +62,7 @@ return [
     'cancel' => 'Cancelar',
     'detail' => 'Detalhes',
     'print' => 'Imprimir',
+    'close' => 'Fechar',
     'tithes_member' => 'Total de dízimos por membro',
     'tithes_period' => 'Dízimos por período ',
 ];

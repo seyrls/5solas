@@ -37,6 +37,7 @@
     <script src="{{URL::asset('js/jquery.min.js')}}"></script>
     <script src="{{URL::asset('js/combobox.js')}}"></script>
     <script src="{{URL::asset('js/jquery.mask.min.js')}}"></script>
+  
     
     <!-- Include this after the sweet alert js file -->
     <script src="{{URL::asset('js/sweetalert.min.js')}}"></script>
@@ -58,6 +59,9 @@
             }
         };
     </script>
+    
+    <script src="{{URL::asset('js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('js/dataTables.bootstrap.min.js')}}"></script>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -112,6 +116,7 @@
             <li><a href="#"><i class="fa fa-pie-chart"></i> {{ trans('menu.charts') }}</a>
                 <ul>
                     <li><a href="{{url('reports/tithesmember')}}"><i class="fa fa-envelope"></i>{{ trans('menu.tithes') }}</a></li>
+                    <li><a href="{{url('reports/tithesbymonth')}}"><i class="fa fa-envelope"></i>{{ trans('menu.tithes_graph') }}</a></li>
                     <li><a href="#"><i class="fa fa-users"></i>{{ trans('menu.families') }}</a></li>
                     <li><a href="#"><i class="fa fa-book"></i>{{ trans('menu.expensive') }}</a></li>
                 </ul>

@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="panel panel-default">
-                            <div class="panel-heading">{{trans('messages.amount_tithes')}} / {{date('Y')}}</div>
+                            <div class="panel-heading">{{trans('messages.amount_expenses')}} / {{date('Y')}}</div>
                             <div class="panel-body">
                                 {!! $expenses->render() !!}
                             </div>

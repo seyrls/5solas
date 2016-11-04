@@ -34,8 +34,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             </form>
                         </div>
@@ -63,31 +61,28 @@
                             @endif
                         @endif
 
-                        <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                        <table id="teste" class="display table table-striped table-bordered table-hover datatable" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>{{trans('messages.amount')}}</th>
                                 <th>{{trans('messages.period')}}</th>
                                 <th>{{trans('messages.created_at')}}</th>
-                                <th>{{trans('messages.updated_at')}}</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>{{trans('messages.amount')}}</th>
-                                <th>{{trans('messages.period')}}</th>
-                                <th>{{trans('messages.created_at')}}</th>
-                                <th>{{trans('messages.updated_at')}}</th>
+                                <th colspan="1" style="text-align:right">Total:</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </tfoot>
                             <tbody>
                             @if(!empty($data))
                                 @foreach($data as $d)
                                     <tr>
-                                        <td>{{trans('forms.symbol_money') . number_format($d->amount,2)}}</td>
+                                        <td>{{number_format($d->amount,2)}}</td>
                                         <td>{{$d->period}}</td>
                                         <td>{{$d->created_at}}</td>
-                                        <td>{{$d->updated_at}}</td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -101,4 +96,45 @@
     </div>
 </div>
 
+
+
 @include('_footer')
+
+<script>
+$(document).ready(function() {
+    $('#teste').DataTable( {
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 0 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Total over this page
+            pageTotal = api
+                .column( 0, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 0 ).footer() ).html(
+                'Total: {{trans('forms.symbol_money')}}'+ total
+            );
+        }
+    } );
+} );
+</script>

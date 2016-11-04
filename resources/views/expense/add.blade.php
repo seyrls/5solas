@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{trans('forms.amount')}}</label>
                                 <div class="col-sm-2">
-                                    <input name="amount" type="text" class="form-control" placeholder="{{trans('forms.amount')}}" required>
+                                    <input name="amount" id="amount" type="text" class="form-control" placeholder="{{trans('forms.amount')}}" required>
                                 </div>
                             </div>
 

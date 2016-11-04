@@ -7,6 +7,31 @@ use Illuminate\Support\Facades\DB;
 
 class Expense extends Model
 {
+    public function getExpensesDetail(){
+        $data = DB::table('expenses as ex')
+            ->join('accounts as ac', 'ex.account_id', '=', 'ac.id')
+            ->join('subcategories as sc', 'ex.subcategory_id' ,'=', 'sc.id')
+            ->join('categories as c', 'sc.category_id', '=', 'c.id')
+            //->where(DB::raw('YEAR(ex.date)'), '=', DB::raw('YEAR(now())'))
+            //->where(DB::raw('MONTH(ex.date)'), '=', DB::raw('MONTH(now())'))
+
+            ->select('ex.id',
+                      'ex.description',
+                      'ex.observation',
+                      'ex.amount',
+                      'ex.date',
+                      'ex.tag',
+                      'ac.account_name',
+                      'sc.subcategory',
+                      'c.category',
+                      'ex.created_at',
+                      'ex.updated_at'
+            )
+            ->get();
+        
+        return $data;
+    }
+
     public function getExpenses(){
         //DB::enableQueryLog();
         
@@ -21,27 +46,6 @@ class Expense extends Model
                         'sc.subcategory',
                         'ex.created_at')
                 ->get();
-
-       /* $data = DB::table('expenses as ex')
-            ->join('accounts as ac', 'ex.account_id', '=', 'ac.id')
-            ->join('subcategories as sc', 'ex.subcategory_id' ,'=', 'sc.id')
-            ->join('categories as c', 'sc.category_id', '=', 'c.id')
-            ->where(DB::raw('YEAR(ex.date)'), '=', DB::raw('YEAR(now())'))
-            ->where(DB::raw('MONTH(ex.date)'), '=', DB::raw('MONTH(now())'))
-
-            ->select('ex.id',
-                      'ex.description',
-                      'ex.observation',
-                      'ex.amount',
-                      'ex.date',
-                      'ex.tag',
-                      'ac.account_name',
-                      'sc.subcategory',
-                      'c.category',
-                      'ex.created_at',
-                      'ex.updated_at'
-            )
-            ->get();*/
         //dd(DB::getQueryLog());
 
         return $data;

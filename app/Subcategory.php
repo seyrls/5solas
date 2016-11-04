@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class Subcategory extends Model
 {
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+    
     public function getCategories(){
         $data = DB::table('subcategories as sc')
             ->join('categories as c', 'c.id', '=', 'sc.category_id')

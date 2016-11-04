@@ -106,6 +106,7 @@ Route::post('/entities/delete', 'EntityController@delete');
 Route::get('/reports/tithesmember', 'ReportController@totalTithesMember');
 Route::get('/reports/tithesdetail/{id}', 'ReportController@tithesDetail');
 Route::match(['get', 'post'], '/reports/tithesperiod', 'ReportController@tithesPeriod');
+Route::get('/reports/tithesbymonth', 'ReportController@tithesByMonth');
 
 
 /*See public/js/combobox.js for more details*/

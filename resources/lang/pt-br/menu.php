@@ -63,6 +63,7 @@ return [
     'detail' => 'Detalhes',
     'print' => 'Imprimir',
     'close' => 'Fechar',
-    'tithes_member' => 'Total de dízimos por membro',
+    'tithes_member' => 'Total de dízimos por membro ',
     'tithes_period' => 'Dízimos por período ',
+    'tithes_graph' => 'Dízimos (Gráficos)',
 ];

@@ -29,12 +29,19 @@ class DashboardController extends Controller
                 $values[] = $t->total;
             }
 
-            $data['chart'] = Charts::create ('line', 'highcharts')
-                    ->setTitle(trans('messages.amount_tithes') .' / '. date('Y'))
-                    ->setElementLabel(trans('messages.tithes'))
-                    ->setLabels($month)
-                    ->setValues($values)
-                    ->setResponsive(true);
+            if (!empty($month) or !empty($values)){
+                $data['chart'] = Charts::create ('line', 'highcharts')
+                        ->setTitle(trans('messages.amount_tithes') .' / '. date('Y'))
+                        ->setElementLabel(trans('messages.tithes'))
+                        ->setLabels($month)
+                        ->setValues($values)
+                        ->setResponsive(true);
+            }else{
+                $data['chart'] = Charts::create ('line', 'highcharts')
+                        ->setTitle(trans('messages.amount_tithes') .' / '. date('Y'))
+                        ->setElementLabel(trans('messages.tithes'))
+                        ->setResponsive(true);
+            }
             
             $data['member'] = Member::count();
             $data['data'] = User::count();
@@ -47,13 +54,25 @@ class DashboardController extends Controller
                 $category[] = $ex->subcategory;
                 
             }
-            $data['expenses'] = Charts::create('donut', 'highcharts')
-                                    ->setTitle('Relatório')
-                                    ->setValues($total)
-                                    ->setLabels($category)
-                                    ->setElementLabel("Total")
-                                    ->setLibrary('morris')
-                                    ->setResponsive(true);
+            
+            /*
+             * If tables are null
+             */
+            if (!empty($total) or ! empty($category)){
+                $data['expenses'] = Charts::create('donut', 'highcharts')
+                                        ->setTitle(trans('messages.amount_expenses'))
+                                        ->setValues($total)
+                                        ->setLabels($category)
+                                        ->setElementLabel("Total")
+                                        ->setLibrary('morris')
+                                        ->setResponsive(true);
+            }else{
+                 $data['expenses'] = Charts::create('donut', 'highcharts')
+                        ->setTitle(trans('messages.amount_expenses'))
+                        ->setElementLabel("Total")
+                        ->setLibrary('morris')
+                        ->setResponsive(true);
+            }
                                     
                     
             $data['month'] = $tithes->getTithesMonth();

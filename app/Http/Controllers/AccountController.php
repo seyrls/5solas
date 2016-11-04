@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\Facades\View;
 use App\Account;
+use Alert;
 
 
 class AccountController extends Controller
@@ -42,6 +43,7 @@ class AccountController extends Controller
 
         // process the login
         if ($validator->fails()) {
+            Alert::error($validator, '')->persistent('Fechar');
             return Redirect::to('accounts')
                 ->withErrors($validator)
                 ->withInput($request->except('account_name'));

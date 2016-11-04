@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\View;
 use App\Expense;
 use App\Library\Combobox;
 use App\Subcategory;
+use Alert;
 
 class ExpenseController extends Controller
 {
@@ -19,7 +20,7 @@ class ExpenseController extends Controller
 
         if (Auth::check()){
             $expense = new Expense();
-            $data['data'] = $expense->getExpenses();
+            $data['data'] = $expense->getExpensesDetail();
 
             return View::make('expense.index', $data);
         }else{
@@ -51,11 +52,16 @@ class ExpenseController extends Controller
 
         // process the login
         if ($validator->fails()) {
+            Alert::error($validator, trans('messages.expense'))->persistent(trans('menu.close'));
             return Redirect::to('expenses')
                 ->withErrors($validator)
                 ->withInput($request->except('amount'));
         } else {
             // store
+            $account = \App\Account::find($request->input('account_id'));
+            $account->balance = $account->balance - $request->input('amount');
+            $account->save();
+            
             $expense = new Expense();
             $expense->subcategory_id = $request->input('subcategory_id');
             $expense->account_id = $request->input('account_id');
@@ -65,18 +71,28 @@ class ExpenseController extends Controller
             $expense->date = $request->input('date');
             $expense->tag = $request->input('tag');
 
-            $data['msg'] = $expense->save();
-            $data['data'] = $expense->getExpenses();
+            $msg = $expense->save();
 
-            return View::make('expense.index', $data);
+            if ($msg == true){
+                Alert::success(trans('messages.save'), trans('messages.expense'))->persistent(trans('menu.close'));
+                return Redirect::to('/expenses');
+            }else{
+                Alert::error(trans('messages.fail'), trans('messages.expense'))->persistent(trans('menu.close'));
+                return Redirect::to('/expenses');
+            }
         }
     }
 
     public function edit($id){
         $m = new ComboBox();
 
-        $data['data'] = Subcategory::find($id);
-        $data['category'] = $m->getComboBoxCategory($data['data']->category_id);
+        $expense = Expense::find($id);
+        $category = \App\Subcategory::find($expense->subcategory_id)->category()->get();
+        
+        $data['category'] = $m->getComboBoxCategory($category[0]->id);
+        $data['subcategory'] = $m->getJquerySubCategory($expense->subcategory_id);
+        $data['account'] = $m->getComboBoxAccount($expense->account_id);
+        $data['data'] = $expense;
 
         return View::make('expense.edit', $data);
     }
@@ -84,48 +100,67 @@ class ExpenseController extends Controller
     public function update(Request $request){
         $data = "";
 
-        $rules = array(
-            'subcategory' => 'required'
+         $rules = array(
+             'subcategory_id' => 'required',
+             'account_id' => 'required',
+            'description' => 'required|max:150',
+            'amount' => 'required',
+            'date' => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('subcategories')
+            Alert::error($validator, trans('messages.expense'))->persistent(trans('menu.close'));
+            return Redirect::to('expenses')
                 ->withErrors($validator)
-                ->withInput($request->except('subcategory'));
+                ->withInput($request->except('expense'));
         } else {
             // store
-            $subcategory = Subcategory::find($request->id);
+            $expense = Expense::find($request->id);
+            
+            $account = \App\Account::find($request->input('account_id'));
+            $account->balance = ($account->balance + $expense->amount) - $request->input('amount');
+            $account->save();
 
-            $subcategory->id = $request->input('id');
-            $subcategory->category_id = $request->input('category_id');
-            $subcategory->subcategory = $request->input('subcategory');
+            $expense->subcategory_id = $request->input('subcategory_id');
+            $expense->account_id = $request->input('account_id');
+            $expense->description = $request->input('description');
+            $expense->amount = $request->input('amount');
+            $expense->date = $request->input('date');
+            $expense->observation = $request->input('observation');
+            $expense->tag = $request->input('tag');
 
-            $data['msg'] = $subcategory->save();
-            $data['data'] = Subcategory::all();
-
-            return View::make('expense.index', $data);
+            $msg = $expense->save();
+            
+            if ($msg == true){
+                Alert::success(trans('messages.update'), trans('messages.expense'))->persistent(trans('menu.close'));
+                return Redirect::to('/expenses');
+            }else{
+                Alert::error(trans('messages.fail'), trans('messages.expense'))->persistent(trans('menu.close'));
+                return Redirect::to('/expenses');
+            }
         }
     }
 
     public function delete(Request $request){
         $data = "";
+        
+        $expense_old = Expense::find($request->id);
+        
+        $account = \App\Account::find($expense_old->account_id);
+        $account->balance = ($account->balance + $expense_old->amount);
+        $account->save();
 
-        $subcategory = Subcategory::destroy($request->id);
-
-        if ($subcategory ==1){
-            $data['data'] = Subcategory::all();
-            $data['msg'] = true;
-
-            return View::make('expense.index', $data);
-        } else{
-            $data['data'] = Subcategory::all();
-            $data['msg'] = false;
-
-            return View::make('expense.index', $data);
+        $expense = Expense::destroy($request->id);
+        
+        if ($expense == 1){
+            Alert::success(trans('messages.delete'), trans('messages.expense'))->persistent(trans('menu.close'));
+            return Redirect::to('/expenses');
+        }else{
+            Alert::error(trans('messages.fail'), trans('messages.expense'))->persistent(trans('menu.close'));
+            return Redirect::to('/expenses');
         }
-
     }
 }

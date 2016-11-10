@@ -205,7 +205,7 @@ class ReportController extends Controller
         
         $report = $expense->getExpenseBySubcategory();
         
-        dd(array_pluck($report, 'subcategory'));
+        dd(array_unique(array_pluck($report, 'subcategory')));
         if(!empty($report)){
             foreach ($report as $r){
                 $labels[] = $r->subcategory;

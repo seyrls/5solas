@@ -59,18 +59,16 @@ class DashboardController extends Controller
              * If tables are null
              */
             if (!empty($total) or ! empty($category)){
-                $data['expenses'] = Charts::create('donut', 'highcharts')
+                $data['expenses'] = Charts::create('pie', 'highcharts')
                                         ->setTitle(trans('messages.amount_expenses'))
                                         ->setValues($total)
                                         ->setLabels($category)
                                         ->setElementLabel("Total")
-                                        ->setLibrary('morris')
                                         ->setResponsive(true);
             }else{
-                 $data['expenses'] = Charts::create('donut', 'highcharts')
+                 $data['expenses'] = Charts::create('pie', 'highcharts')
                         ->setTitle(trans('messages.amount_expenses'))
                         ->setElementLabel("Total")
-                        ->setLibrary('morris')
                         ->setResponsive(true);
             }
                                     

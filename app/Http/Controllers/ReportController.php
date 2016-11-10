@@ -70,6 +70,9 @@ class ReportController extends Controller
                 $values[] = $r->total;
 
             }
+        }else{
+            $labels[] = null;
+            $values[] = null;
         }
         
         $data['area'] = Charts::create ('area', 'highcharts')
@@ -91,6 +94,9 @@ class ReportController extends Controller
                 $values[] = $r->total;
 
             }
+        }else{
+            $labels[] = null;
+            $values[] = null;
         }
         
         $data['pie'] = Charts::create ('pie', 'highcharts')
@@ -111,9 +117,12 @@ class ReportController extends Controller
                $labels[] = $r->name;
                $values[] = $r->total;
             }
+        }else{
+            $labels[] = null;
+            $values[] = null;
         }
         
-        $data['bar'] = Charts::create ('bar', 'highcharts')
+        $data['bar'] = Charts::create ('donut', 'highcharts')
                         ->setTitle(trans('messages.amount_tithes_by_member') . date('F, Y'))
                         ->setLabels($labels)
                         ->setValues($values)
@@ -124,24 +133,103 @@ class ReportController extends Controller
         unset($values);
         unset($report);
         
-        $report = $tithe->getTithesByExpenses();
+        $report = $tithe->getTithesByMonth();
+        $expenses = new \App\Expense();
+        $report1 = $expenses->getExpensesByMonth();
         
         if(!empty($report)){
             foreach ($report as $r){
-                $values1[] = $r->tithes;
-                $values2[] = $r->expenses;
-                $labels[] = $r->period;
+                $values[] = $r->total;
+                $labels[] = $r->month;
             }
+        }else{
+            $labels1[] = null;
+            $values[] = null;
         }
         
-        $data['line'] = Charts::multi ('area', 'morris')
+        if(!empty($report1)){
+            foreach ($report1 as $r1){
+                $values1[] = $r1->expenses;
+            }
+        }else{
+            $values1[] = null;
+        }
+        
+        $data['line'] = Charts::multi('bar', 'chartjs')
+                        ->setDimensions(0, 500)
+                        ->setResponsive(false)
                         ->setTitle(trans('messages.tithes_expenses') . date('Y'))
                         ->setLabels($labels)
-                        ->setDataset(trans('messages.tithes'),$values1)
-                        ->setDataset(trans('messages.expense'),$values2)
-                        ->setElementLabel(trans('messages.tithe'))
-                        ->setResponsive(true);
+                        ->setDataset(trans('messages.tithes'),$values)
+                        ->setDataset(trans('messages.expense'),$values1)
+                        ->setElementLabel(trans('messages.tithe'));
         
         return View::make('report.tithebymonth', $data);
     }
+    
+    public function expensesDetails(){
+        $expenses = new \App\Expense();
+        $data['expenses'] = $expenses->getExpensesPivot();
+        
+        $data['elements'] = array_count_values(array_column($data['expenses'], 'id'));
+        
+        return View::make('report.expensesdetails', $data);
+    }
+    
+    public function expenseGraph() {
+        $expense = new \App\Expense();
+        $report = $expense->getExpenseByMonthGraph();
+                
+        if(!empty($report)){
+            foreach ($report as $r){
+                $labels[] = $r->period;
+                $values[] = $r->total;
+
+            }
+        }else{
+            $labels[] = null;
+            $values[] = null;
+        }
+        
+        $data['line'] = Charts::create ('area', 'highcharts')
+                        ->setTitle(trans('messages.expense') .' / '. date('Y'))
+                        ->setLabels($labels)
+                        ->setValues($values)
+                        ->setElementLabel(trans('messages.expense'))
+                        ->setResponsive(true);
+        
+        unset($labels);
+        unset($values);
+        unset($report);
+        
+        
+        $report = $expense->getExpenseBySubcategory();
+        
+        dd(array_pluck($report, 'subcategory'));
+        if(!empty($report)){
+            foreach ($report as $r){
+                $labels[] = $r->subcategory;
+                $values[] = $r->total;
+                $period[] = $r->period;
+            }
+        }else{
+            $labels[] = null;
+            $values[] = null;
+        }
+        
+        $data['bar'] = Charts::multi('line', 'highcharts')
+                        ->setTitle(trans('messages.expense') .' / '. date('Y'))
+                        ->setLabels($labels)
+                        ->setDataset($labels[0],$values)
+                        ->setDataset($labels[1],$values)
+                        ->setElementLabel(trans('messages.expense'))
+                        ->setResponsive(true);
+         
+        unset($labels);
+        unset($values);
+        unset($report);
+        
+        return View::make('report.expensegraph', $data);
+    }
+            
 }

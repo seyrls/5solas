@@ -61,7 +61,7 @@
                             @endif
                         @endif
 
-                        <table id="teste" class="display table table-striped table-bordered table-hover datatable" cellspacing="0" width="100%">
+                        <table id="table-tithe" class="display table table-striped table-bordered table-hover datatable" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>{{trans('messages.amount')}}</th>
@@ -102,7 +102,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#teste').DataTable( {
+    $('#table-tithe').DataTable( {
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
  

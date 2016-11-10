@@ -118,7 +118,8 @@
                     <li><a href="{{url('reports/tithesmember')}}"><i class="fa fa-envelope"></i>{{ trans('menu.tithes') }}</a></li>
                     <li><a href="{{url('reports/tithesbymonth')}}"><i class="fa fa-envelope"></i>{{ trans('menu.tithes_graph') }}</a></li>
                     <li><a href="#"><i class="fa fa-users"></i>{{ trans('menu.families') }}</a></li>
-                    <li><a href="#"><i class="fa fa-book"></i>{{ trans('menu.expensive') }}</a></li>
+                    <li><a href="{{url('reports/expenses')}}"><i class="fa fa-book"></i>{{ trans('menu.expensive') }}</a></li>
+                    <li><a href="{{url('reports/expensegraph')}}"><i class="fa fa-book"></i>{{ trans('menu.expenses_graph') }}</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-cog"></i> {{ trans('menu.administration') }}</a>

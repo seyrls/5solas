@@ -107,6 +107,8 @@ Route::get('/reports/tithesmember', 'ReportController@totalTithesMember');
 Route::get('/reports/tithesdetail/{id}', 'ReportController@tithesDetail');
 Route::match(['get', 'post'], '/reports/tithesperiod', 'ReportController@tithesPeriod');
 Route::get('/reports/tithesbymonth', 'ReportController@tithesByMonth');
+Route::get('/reports/expenses', 'ReportController@expensesDetails');
+Route::get('/reports/expensegraph', 'ReportController@expenseGraph');
 
 
 /*See public/js/combobox.js for more details*/

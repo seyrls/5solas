@@ -44,16 +44,38 @@
                             <tr>
                                 <th>{{trans('messages.family')}}</th>
                                 <th>{{trans('messages.member')}}</th>
-                                <th>{{trans('messages.total')}}</th>
-                                <th>{{trans('messages.option')}}</th>
+                                <th>{{trans('messages.JAN')}}</th>
+                                <th>{{trans('messages.FEB')}}</th>
+                                <th>{{trans('messages.MAR')}}</th>
+                                <th>{{trans('messages.APR')}}</th>
+                                <th>{{trans('messages.MAY')}}</th>
+                                <th>{{trans('messages.JUN')}}</th>
+                                <th>{{trans('messages.JUL')}}</th>
+                                <th>{{trans('messages.AUG')}}</th>
+                                <th>{{trans('messages.SEP')}}</th>
+                                <th>{{trans('messages.OCT')}}</th>
+                                <th>{{trans('messages.NOV')}}</th>
+                                <th>{{trans('messages.DEC')}}</th>
+                                <th>{{trans('messages.year')}}</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
                                 <th>{{trans('messages.family')}}</th>
                                 <th>{{trans('messages.member')}}</th>
-                                <th>{{trans('messages.total')}}</th>
-                                <th>{{trans('messages.option')}}</th>
+                                <th>{{trans('messages.JAN')}}</th>
+                                <th>{{trans('messages.FEB')}}</th>
+                                <th>{{trans('messages.MAR')}}</th>
+                                <th>{{trans('messages.APR')}}</th>
+                                <th>{{trans('messages.MAY')}}</th>
+                                <th>{{trans('messages.JUN')}}</th>
+                                <th>{{trans('messages.JUL')}}</th>
+                                <th>{{trans('messages.AUG')}}</th>
+                                <th>{{trans('messages.SEP')}}</th>
+                                <th>{{trans('messages.OCT')}}</th>
+                                <th>{{trans('messages.NOV')}}</th>
+                                <th>{{trans('messages.DEC')}}</th>
+                                <th>{{trans('messages.year')}}</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -62,10 +84,21 @@
                                     <tr>
                                         <td>{{$d->family}}</td>
                                         <td>{{$d->member}}</td>
-                                        <td>{{trans('forms.symbol_money') . number_format($d->total,2)}}</td>
-                                        <td>
-                                            <a href="{{url('reports/tithesdetail/'.$d->member_id)}}" class="btn btn-warning btn-xs">{{trans('menu.detail')}}</a>
-                                        </td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->JAN,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->FEB,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->MAR,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->APR,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->MAY,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->JUN,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->JUL,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->AUG,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->SEP,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->OCT,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->NOV,2)}}</td>
+                                        <td>{{trans('forms.symbol_money') . number_format($d->DEC,2)}}</td>
+                                        <td>{{date('Y')}}</td>
+                                        
+                                        
                                     </tr>
                                 @endforeach
                             @endif

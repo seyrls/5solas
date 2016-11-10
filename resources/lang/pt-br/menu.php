@@ -66,4 +66,5 @@ return [
     'tithes_member' => 'Total de dízimos por membro ',
     'tithes_period' => 'Dízimos por período ',
     'tithes_graph' => 'Dízimos (Gráficos)',
+    'expenses_graph' => 'Gastos (Gráfico)'
 ];

@@ -63,6 +63,7 @@ return [
     'year' => 'Ano',
     'expense' => 'Despesas',
     'total_expenses' => 'Total de despesas ',
+    'total_expenses_month' => 'Total de despesas por mês ',
     'months' => 'Meses',
     'graphs' => 'Gráficos',
     'JAN' => 'Janeiro',

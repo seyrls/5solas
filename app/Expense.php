@@ -141,14 +141,31 @@ class Expense extends Model
             ->join('categories', 'subcategories.category_id', '=', 'categories.id')
             ->where(DB::raw('YEAR(expenses.date)'), '=', DB::raw('YEAR(now())'))
             ->groupBy('subcategories.id')
-            ->groupBy(DB::raw('MONTH(expenses.date)'))
-            ->groupBy(DB::raw('YEAR(expenses.date)'))
-            ->orderBy('period', 'DESC')
+            ->orderBy('expenses.date', 'DESC')
             ->orderBy('subcategories.id')
             ->select(
                     'subcategories.subcategory',
-                    DB::raw('sum(amount) as total'),
-                    DB::raw("CONCAT(MONTHNAME(expenses.date), '/',YEAR(expenses.date)) as period")
+                    DB::raw('sum(amount) as total')
+                    )
+            ->get();
+
+        //dd(DB::getQueryLog());
+
+        return $data;
+    }
+    
+    public function getExpenseBySubcategoryMonth(){
+        //DB::enableQueryLog();
+        $data = DB::table('expenses')
+            ->join('subcategories', 'expenses.subcategory_id', '=', 'subcategories.id')
+            ->join('categories', 'subcategories.category_id', '=', 'categories.id')
+            ->where(DB::raw('MONTH(expenses.date)'), '=', DB::raw('MONTH(NOW())'))
+            ->groupBy('subcategories.id')
+            ->orderBy('expenses.date', 'DESC')
+            ->orderBy('subcategories.id')
+            ->select(
+                    'subcategories.subcategory',
+                    DB::raw('sum(amount) as total')
                     )
             ->get();
 
